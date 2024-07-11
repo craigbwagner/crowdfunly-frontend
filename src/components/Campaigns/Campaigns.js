@@ -1,27 +1,3 @@
-import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom';
 
 
-
-const Campaigns = () => {
-    const [campaigns, setCampaigns] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => {
-        
-
-
-
-    })
-
-
-
-    return (
-
-
-
-
-
-    )
-
-}
