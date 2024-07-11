@@ -7,6 +7,7 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
 import CampaignForm from "./components/CampaignForm/CampaignForm";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
