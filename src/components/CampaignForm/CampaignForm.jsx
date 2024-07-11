@@ -17,7 +17,7 @@ const CampaignForm = (props) => {
     event.preventDefault();
     console.log("formData", formData);
     props.handleAddCampaign(formData);
-};
+  };
 
   return (
     <>
