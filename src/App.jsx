@@ -36,9 +36,18 @@ const App = () => {
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns/create-campaign" element={<CampaignForm handleAddCampaign={handleAddCampaign}/>} />
-        <Route path="/signup" element={<SignupForm setUser={setUser} />} />
-        <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+        <Route
+          path="/campaigns/create-campaign"
+          element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
+        />
+        <Route
+          path="/users/signup"
+          element={<SignupForm setUser={setUser} />}
+        />
+        <Route
+          path="/users/signin"
+          element={<SigninForm setUser={setUser} />}
+        />
       </Routes>
     </>
   );
