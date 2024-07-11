@@ -1,0 +1,32 @@
+import { useState, useEffect } from "react";
+
+function ContributionForm() {
+  const [amount, setAmount] = useState("");
+  const [campaignId, setCampaignId] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const contributionData = {
+      amount: Number(amount),
+      campaignId,
+      contributedBy: "123456789",
+    };
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Amount:</label>
+          <input type="number" value={amount} onChange={(evt) => setAmount(evt.target.value)} required />
+        </div>
+        <div>
+          <label>Campaign ID:</label>
+          <input type="text" value={campaignId} onChange={(e) => setCampaignId(e.target.value)} required />
+        </div>
+        <button type="submit">Contribute</button>
+      </form>
+    );
+  };
+}
+
+export default ContributionForm;
