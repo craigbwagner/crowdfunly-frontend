@@ -1,14 +1,15 @@
-import * as authService from '../../services/authService';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import * as authService from "../../services/authService";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState(['']);
+  const [message, setMessage] = useState([""]);
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    passwordConf: '',
+    username: "",
+    email: "",
+    password: "",
+    passwordConf: "",
   });
 
   const updateMessage = (msg) => {
@@ -22,19 +23,18 @@ const SignupForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(authService.signup)
       const newUserResponse = await authService.signup(formData);
       props.setUser(newUserResponse.user);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       updateMessage(err.message);
     }
   };
 
-  const { username, password, passwordConf } = formData;
+  const { username, email, password, passwordConf } = formData;
 
   const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
+    return !(username && email && password && password === passwordConf);
   };
 
   return (
@@ -49,6 +49,16 @@ const SignupForm = (props) => {
             id="name"
             value={username}
             name="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            name="email"
             onChange={handleChange}
           />
         </div>
