@@ -11,6 +11,13 @@ import CampaignForm from "./components/CampaignForm/CampaignForm";
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
 
+  // const navigate = useNavigate();
+
+  const handleAddCampaign = async (campaignFormData) => {
+    console.log("campaignFormData", campaignFormData);
+    navigate("/campaigns");
+  };
+
   const handleSignout = () => {
     authService.signout();
     setUser(null);
@@ -26,7 +33,7 @@ const App = () => {
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns/new" element={<CampaignForm />} />
+        <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign}/>} />
 
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />

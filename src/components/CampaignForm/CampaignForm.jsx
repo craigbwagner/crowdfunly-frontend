@@ -93,6 +93,8 @@ const CampaignForm = (props) => {
             value={formData.endDate}
             onChange={handleChange}
           />
+
+          <button type="submit">Submit</button>
         </form>
       </main>
     </>
