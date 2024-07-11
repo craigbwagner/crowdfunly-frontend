@@ -28,13 +28,18 @@ const App = () => {
       <Navbar user={user} handleSignout={handleSignout} />
       <Routes>
         {user ? (
-          <Route path="/" element={<Dashboard user={user} />} />
+          <>
+            <Route path="/" element={<Dashboard user={user} />} />
+            <Route
+              path="/profiles/:hootid"
+              element={<Dashboard user={user} />}
+            />
+          </>
         ) : (
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign}/>} />
-
+        <Route path="/campaigns/create-campaign" element={<CampaignForm handleAddCampaign={handleAddCampaign}/>} />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>
