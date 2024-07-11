@@ -7,12 +7,6 @@ function ContributionForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const contributionData = {
-      amount: Number(amount),
-      campaignId,
-      contributedBy: "123456789",
-    };
-
     return (
       <form onSubmit={handleSubmit}>
         <div>
