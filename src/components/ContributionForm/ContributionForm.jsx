@@ -21,7 +21,7 @@ function ContributionForm() {
         </div>
         <div>
           <label>Campaign ID:</label>
-          <input type="text" value={campaignId} onChange={(e) => setCampaignId(e.target.value)} required />
+          <input type="text" value={campaignId} onChange={(evt) => setCampaignId(evt.target.value)} required />
         </div>
         <button type="submit">Contribute</button>
       </form>
