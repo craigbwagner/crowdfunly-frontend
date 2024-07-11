@@ -1,7 +1,13 @@
 import { useState } from "react";
 
 const CampaignForm = (props) => {
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState({
+    title: "",
+    campaignType: "",
+    description: "",
+    goalAmount: "",
+    endDate: "",
+  });
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
