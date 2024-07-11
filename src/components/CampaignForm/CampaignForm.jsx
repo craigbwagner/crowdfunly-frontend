@@ -22,7 +22,7 @@ const CampaignForm = (props) => {
     endDate: { type: Date, required: true },
   });
 
-  const handelChange = (event) => {
+  const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
@@ -35,6 +35,65 @@ const CampaignForm = (props) => {
     <>
       <main>
         <h1>New Campaign Form</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="title-input">Title </label>
+          <input
+            required
+            type="text"
+            name="title"
+            id="title-input"
+            value={formData.title}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="description-input">Description </label>
+          <textarea
+            required
+            type="text"
+            name="description"
+            id="description-input"
+            value={formData.description}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="goalAmount-input">Goal Amount </label>
+          <input
+            required
+            type="Number"
+            name="goalAmount"
+            id="goalAmount-input"
+            value={formData.goalAmount}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="campaignType-input">Campaign Type </label>
+          <select
+            required
+            name="campaignType"
+            id="campaignType-input"
+            value={formData.campaignType}
+            onChange={handleChange}
+          >
+            <option value="Charity">Charity</option>
+            <option value="Education">Education</option>
+            <option value="Creative">Creative</option>
+            <option value="Sports">Sports</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Business">Business</option>
+            <option value="Events">Events</option>
+            <option value="Environment">Environment</option>
+          </select>
+
+          <label htmlFor="endDate-input">End Date </label>
+          <input
+            required
+            type="date"
+            name="endDate"
+            id="endDate-input"
+            value={formData.endDate}
+            onChange={handleChange}
+          />
+        </form>
       </main>
     </>
   );
