@@ -65,7 +65,7 @@ const CampaignForm = (props) => {
           <label htmlFor="goalAmount-input">Goal Amount </label>
           <input
             required
-            type="Number"
+            type="number"
             name="goalAmount"
             id="goalAmount-input"
             value={formData.goalAmount}
