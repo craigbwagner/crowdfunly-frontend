@@ -30,6 +30,7 @@ const CampaignForm = (props) => {
             type="text"
             name="title"
             id="title-input"
+            value={formData.title}
             onChange={handleChange}
           />
 
@@ -38,6 +39,7 @@ const CampaignForm = (props) => {
             required
             name="campaignType"
             id="campaignType-input"
+            value={formData.campaignType}
             onChange={handleChange}
           >
             <option value="Charity">Charity</option>
@@ -56,6 +58,7 @@ const CampaignForm = (props) => {
             type="text"
             name="description"
             id="description-input"
+            value={formData.description}
             onChange={handleChange}
           />
 
@@ -65,6 +68,7 @@ const CampaignForm = (props) => {
             type="Number"
             name="goalAmount"
             id="goalAmount-input"
+            value={formData.goalAmount}
             onChange={handleChange}
           />
 
@@ -74,6 +78,7 @@ const CampaignForm = (props) => {
             type="date"
             name="endDate"
             id="endDate-input"
+            value={formData.endDate}
             onChange={handleChange}
           />
 
