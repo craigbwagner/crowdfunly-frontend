@@ -1,26 +1,7 @@
 import { useState } from "react";
 
 const CampaignForm = (props) => {
-  const [formData, setFormData] = useState({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    goalAmount: { type: Number, required: true },
-    campaignType: {
-      type: String,
-      enum: [
-        "Charity",
-        "Education",
-        "Creative",
-        "Sports",
-        "Entertainment",
-        "Business",
-        "Events",
-        "Environment",
-      ],
-      required: true,
-    },
-    endDate: { type: Date, required: true },
-  });
+  const [formData, setFormData] = useState();
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -28,8 +9,9 @@ const CampaignForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("formData", formData);
-  };
+    props.handleAddCampaign(formData);
+};
+console.log("formData", formData);
 
   return (
     <>
@@ -42,27 +24,6 @@ const CampaignForm = (props) => {
             type="text"
             name="title"
             id="title-input"
-            value={formData.title}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="description-input">Description </label>
-          <textarea
-            required
-            type="text"
-            name="description"
-            id="description-input"
-            value={formData.description}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="goalAmount-input">Goal Amount </label>
-          <input
-            required
-            type="Number"
-            name="goalAmount"
-            id="goalAmount-input"
-            value={formData.goalAmount}
             onChange={handleChange}
           />
 
@@ -71,7 +32,6 @@ const CampaignForm = (props) => {
             required
             name="campaignType"
             id="campaignType-input"
-            value={formData.campaignType}
             onChange={handleChange}
           >
             <option value="Charity">Charity</option>
@@ -84,13 +44,30 @@ const CampaignForm = (props) => {
             <option value="Environment">Environment</option>
           </select>
 
+          <label htmlFor="description-input">Description </label>
+          <textarea
+            required
+            type="text"
+            name="description"
+            id="description-input"
+            onChange={handleChange}
+          />
+
+          <label htmlFor="goalAmount-input">Goal Amount </label>
+          <input
+            required
+            type="Number"
+            name="goalAmount"
+            id="goalAmount-input"
+            onChange={handleChange}
+          />
+
           <label htmlFor="endDate-input">End Date </label>
           <input
             required
             type="date"
             name="endDate"
             id="endDate-input"
-            value={formData.endDate}
             onChange={handleChange}
           />
 

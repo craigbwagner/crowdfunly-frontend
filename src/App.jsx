@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Landing from "./components/Landing/Landing";
@@ -11,10 +11,9 @@ import CampaignForm from "./components/CampaignForm/CampaignForm";
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAddCampaign = async (campaignFormData) => {
-    console.log("campaignFormData", campaignFormData);
     navigate("/campaigns");
   };
 
