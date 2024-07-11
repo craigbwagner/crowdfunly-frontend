@@ -6,7 +6,7 @@ import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
-
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -23,10 +23,7 @@ const App = () => {
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route
-              path="/profiles/:hootid"
-              element={<Dashboard user={user} />}
-            />
+            <Route path="/profile/:userId" element={<Profile user={user} />} />
           </>
         ) : (
           <Route path="/" element={<Landing />} />
