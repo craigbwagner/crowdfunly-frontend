@@ -9,9 +9,9 @@ const CampaignForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("formData", formData);
     props.handleAddCampaign(formData);
 };
-console.log("formData", formData);
 
   return (
     <>
