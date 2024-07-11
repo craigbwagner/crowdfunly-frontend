@@ -6,6 +6,7 @@ import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
+import CampaignForm from "./components/CampaignForm/CampaignForm";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -25,7 +26,7 @@ const App = () => {
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns/new" element={<h1>New Campaign Form Page</h1>} />
+        <Route path="/campaigns/new" element={<CampaignForm />} />
 
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
