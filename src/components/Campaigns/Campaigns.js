@@ -7,13 +7,21 @@ const Campaigns = () => {
     const [loading, setLoading] = useState(true);
 
 
+    useEffect(() => {
+        
+
+
+
+    })
+
+
 
     return (
 
 
 
 
-        
+
     )
 
 }
