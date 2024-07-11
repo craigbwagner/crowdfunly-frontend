@@ -30,10 +30,7 @@ const App = () => {
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route
-              path="/profiles/:hootid"
-              element={<Dashboard user={user} />}
-            />
+            <Route path="/profile/:userId" element={<Profile user={user} />} />
           </>
         ) : (
           <Route path="/" element={<Landing />} />
