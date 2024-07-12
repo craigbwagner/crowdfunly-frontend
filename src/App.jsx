@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Landing from "./components/Landing/Landing";
@@ -9,7 +9,7 @@ import * as authService from "../src/services/authService";
 import CampaignList from "./components/CampaignList";
 import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
-import * as campaignService from "../src/services/campaignService";
+import * as campaignService from "./services/campaignService";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -27,6 +27,12 @@ const App = () => {
     SetCampaigns(campaigns.filter((campaign) => campaign._id !== deletedCampaign._id));
     navigate("/campaigns");
   };
+
+  const handleUpdateCampaign = async (campaignId, campaignFormData) => {
+    const updateCampaign = await update(campaignId, campaignFormData);
+    setCampaigns(campaigns.map((campaign) => (campaignId === campaign._id ? updateCampaign : campaign)));
+    navigate(`/campaigns/${campaignId}`);
+  }
 
   const handleSignout = () => {
     authService.signout();
