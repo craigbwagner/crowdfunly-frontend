@@ -2,7 +2,8 @@ import { useState } from "react";
 
 function ContributionForm() {
   const [amount, setAmount] = useState("");
-  const [campaignId, setCampaignId] = useState("");
+  const { campaignId } = useParams;
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
