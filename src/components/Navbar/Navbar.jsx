@@ -15,7 +15,7 @@ const NavBar = ({ user, handleSignout }) => {
               <Link to="/campaigns">Browse Campaigns</Link>
             </li>
             <li>
-              <Link to="/campaigns/create-campaign">Create Campaign</Link>
+              <Link to="/campaigns/new">Create Campaign</Link>
             </li>
             <li>
               <Link to={`/profile/${user._id}`}>Profile</Link>
@@ -30,6 +30,12 @@ const NavBar = ({ user, handleSignout }) => {
       ) : (
         <nav>
           <ul>
+          <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/campaigns">Browse Campaigns</Link>
+            </li>
             <li>
               <Link to="/signin">Sign In</Link>
             </li>
