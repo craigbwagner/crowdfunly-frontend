@@ -13,7 +13,6 @@ function ShowPage() {
     };
     fetchCampaign();
   }, [campaignId]);
-  console.log(campaign);
 
   if (!campaign) return <main>Loading...</main>;
   return (
