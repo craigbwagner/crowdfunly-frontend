@@ -38,7 +38,9 @@ function CampaignsList(props) {
       </select>
 
       <ul>
-        {filteredCampaigns.length > 0 ? (
+        {props.campaigns.length === 0 ? (
+          <p>No campaigns found.</p>
+        ) : filteredCampaigns.length > 0 ? (
           filteredCampaigns.map((campaign) => (
             <li key={campaign._id}>
               <h2>
@@ -66,4 +68,5 @@ function CampaignsList(props) {
     </div>
   );
 }
+
 export default CampaignsList;
