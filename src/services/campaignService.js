@@ -51,3 +51,19 @@ const index = async () => {
       console.log(error);
     }
   };
+
+  const update = async (campaignId, campaignFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${campaignId}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(campaignFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
