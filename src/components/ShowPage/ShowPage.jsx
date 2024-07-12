@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import * as campaignService from "../../services/campaignService";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ShowPage() {
   const [campaign, setCampaign] = useState(null);
