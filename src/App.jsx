@@ -9,30 +9,30 @@ import * as authService from "../src/services/authService";
 import CampaignList from "./components/CampaignList";
 import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
-import * as campaignService from "./services/campaignService";
+import * as campaignService from "../src/services/campaignService";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
-  const [campaigns, SetCampaigns] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
   const navigate = useNavigate();
 
   const handleAddCampaign = async (campaignFormData) => {
-    const newCampaign = await create(campaignFormData);
+    const newCampaign = await campaignService.create(campaignFormData);
     setCampaigns([newCampaign, ...campaigns]);
     navigate("/campaigns");
   };
 
   const handleDeleteCampaign = async (campaignId) => {
-    const deleteCampaign = await deleteCampaign(campaignId);
-    SetCampaigns(campaigns.filter((campaign) => campaign._id !== deletedCampaign._id));
+    const deleteCampaign = await campaignService.deleteCampaign(campaignId);
+    setCampaigns(campaigns.filter((campaign) => campaign._id !== deleteCampaign._id));
     navigate("/campaigns");
   };
 
   const handleUpdateCampaign = async (campaignId, campaignFormData) => {
-    const updateCampaign = await update(campaignId, campaignFormData);
+    const updateCampaign = await campaignService.update(campaignId, campaignFormData);
     setCampaigns(campaigns.map((campaign) => (campaignId === campaign._id ? updateCampaign : campaign)));
     navigate(`/campaigns/${campaignId}`);
-  }
+  };
 
   const handleSignout = () => {
     authService.signout();
@@ -47,13 +47,17 @@ const App = () => {
           <>
             <Route path="/" element={<Dashboard user={user} />} />
             <Route path="/profile/:userId" element={<Profile user={user} />} />
+            <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
+            <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
+            <Route path="/campaigns/:campaignId" element={<CampaignDetails handleDeleteCampaign={handleDeleteCampaign} />} />
+            <Route path="/campaigns/:campaignId/edit" element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />} />
+
           </>
         ) : (
           <Route path="/" element={<Landing />} />
         )}
 
         <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
-        <Route path="/campaigns/create-campaign" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>
