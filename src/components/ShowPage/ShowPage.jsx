@@ -41,6 +41,9 @@ function ShowPage() {
           timeZone: "UTC",
         })}
       </h3>
+
+        <Link to={`/campaigns/${campaign._id}/edit`}>Edit Campaign</Link>
+
       <p>{campaign.description}</p>
       <h2>Contributions</h2>
     </>
