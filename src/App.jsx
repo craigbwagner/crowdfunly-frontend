@@ -6,7 +6,7 @@ import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
-import CampaignList from "./components/CampaignsList/CampaignsList";
+import CampaignsList from "./components/CampaignsList/CampaignsList";
 import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
 import ShowPage from "./components/ShowPage/ShowPage";
