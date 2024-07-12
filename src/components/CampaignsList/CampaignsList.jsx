@@ -19,6 +19,24 @@ function CampaignsList(props) {
   return (
     <div>
       <h1>Available Campaigns</h1>
+      <label htmlFor="campaignFilterType">Filter By Campaign Type: </label>
+      <select
+        name="campaignType"
+        id="campaignFilterType"
+        value={selectedType}
+        onChange={handleTypeChange}
+      >
+        <option value="">All</option>
+        <option value="Charity">Charity</option>
+        <option value="Education">Education</option>
+        <option value="Creative">Creative</option>
+        <option value="Sports">Sports</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Business">Business</option>
+        <option value="Events">Events</option>
+        <option value="Environment">Environment</option>
+      </select>
+
       <ul>
         {props.campaigns.map((campaign) => (
           <li key={campaign._id}>
