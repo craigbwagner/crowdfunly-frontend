@@ -37,3 +37,17 @@ const index = async () => {
       console.log(error);
     }
   };
+
+  const deleteCampaign = async (campaignId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${campaignId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
