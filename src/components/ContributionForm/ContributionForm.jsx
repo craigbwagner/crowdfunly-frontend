@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function ContributionForm() {
   const [amount, setAmount] = useState("");
@@ -11,11 +11,21 @@ function ContributionForm() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Amount:</label>
-          <input type="number" value={amount} onChange={(evt) => setAmount(evt.target.value)} required />
+          <input
+            type="number"
+            value={amount}
+            onChange={(evt) => setAmount(evt.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Campaign ID:</label>
-          <input type="text" value={campaignId} onChange={(evt) => setCampaignId(evt.target.value)} required />
+          <input
+            type="text"
+            value={campaignId}
+            onChange={(evt) => setCampaignId(evt.target.value)}
+            required
+          />
         </div>
         <button type="submit">Contribute</button>
       </form>
