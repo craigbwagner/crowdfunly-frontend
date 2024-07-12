@@ -11,3 +11,13 @@ const index = async () => {
     }
   };
 
+  const show = async (campaignId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${campaignId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
