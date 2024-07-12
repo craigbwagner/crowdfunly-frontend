@@ -9,7 +9,9 @@ function CampaignsList(props) {
         {props.campaigns.map((campaign) => (
           <li key={campaign._id}>
             <h2>
-              <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
+              <Link key={campaign._id} to={`/campaigns/${campaign._id}`}>
+                {campaign.title}
+              </Link>
             </h2>
             <p>{campaign.description}</p>
             <p>Goal: ${campaign.goalAmount}</p>
