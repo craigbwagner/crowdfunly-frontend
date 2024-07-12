@@ -15,7 +15,7 @@ import * as campaignService from '../src/services/campaignService';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
-
+  const [campaigns, SetCampaigns] = useState([]);
   const navigate = useNavigate();
 
   const handleAddCampaign = async (campaignFormData) => {
