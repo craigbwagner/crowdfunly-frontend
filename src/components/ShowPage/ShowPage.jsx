@@ -55,7 +55,9 @@ function ShowPage({ user, handleDeleteCampaign }) {
         <Link to={`/contributions/${campaign._id}`}>
           Contribute to this Campaign
         </Link>
-      ) : null}
+      ) : (
+        <h3>Create an account to contribute</h3>
+      )}
       <p>{campaign.description}</p>
       <h2>Contributions</h2>
     </>
