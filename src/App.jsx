@@ -19,7 +19,8 @@ const App = () => {
   const navigate = useNavigate();
 
   const handleAddCampaign = async (campaignFormData) => {
-    // need to build campaign service functions and call upon service here
+    const newCampaign = await create(campaignFormData);
+    setCampaigns([newCampaign, ...campaigns]);
     navigate("/campaigns");
   };
 
