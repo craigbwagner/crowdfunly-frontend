@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Dashboard from './components/Dashboard/Dashboard';
-import Landing from './components/Landing/Landing';
-import SignupForm from './components/SignupForm/SignupForm';
-import SigninForm from './components/SigninForm/SigninForm';
-import * as authService from '../src/services/authService';
-import CampaignList from './components/CampaignList';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Landing from "./components/Landing/Landing";
+import SignupForm from "./components/SignupForm/SignupForm";
+import SigninForm from "./components/SigninForm/SigninForm";
+import * as authService from "../src/services/authService";
+import CampaignList from "./components/CampaignList";
 import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
+import ShowPage from "./components/ShowPage/ShowPage";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -38,7 +39,10 @@ const App = () => {
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
+        <Route
+          path="/campaigns"
+          element={<CampaignList campaigns={campaigns} />}
+        />
         <Route
           path="/campaigns/create-campaign"
           element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
@@ -51,10 +55,7 @@ const App = () => {
           path="/users/signin"
           element={<SigninForm setUser={setUser} />}
         />
-        <Route
-          path="/campaigns/:campaignId"
-          element={<SigninForm setUser={setUser} />}
-        />
+        <Route path="/campaigns/:campaignId" element={<ShowPage />} />
       </Routes>
     </>
   );
