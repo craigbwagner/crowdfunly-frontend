@@ -38,29 +38,32 @@ function CampaignsList(props) {
       </select>
 
       <ul>
-        {filteredCampaigns.map((campaign) => (
-          <li key={campaign._id}>
-            <h2>
-              <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
-            </h2>
-            <p>{campaign.description}</p>
-            <p>Goal: ${campaign.goalAmount}</p>
-            <p>Raised: ${campaign.amountRaised}</p>
-            <p>
-              End Date:{" "}
-              {new Date(campaign.endDate).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
-                timeZone: "UTC",
-              })}
-            </p>
-            <p>Type: {campaign.campaignType}</p>
-          </li>
-        ))}
+        {filteredCampaigns.length > 0 ? (
+          filteredCampaigns.map((campaign) => (
+            <li key={campaign._id}>
+              <h2>
+                <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
+              </h2>
+              <p>{campaign.description}</p>
+              <p>Goal: ${campaign.goalAmount}</p>
+              <p>Raised: ${campaign.amountRaised}</p>
+              <p>
+                End Date:{" "}
+                {new Date(campaign.endDate).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  timeZone: "UTC",
+                })}
+              </p>
+              <p>Type: {campaign.campaignType}</p>
+            </li>
+          ))
+        ) : (
+          <p>No {selectedType} campaigns found.</p>
+        )}
       </ul>
     </div>
   );
 }
-
 export default CampaignsList;
