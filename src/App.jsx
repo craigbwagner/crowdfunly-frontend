@@ -27,7 +27,7 @@ const App = () => {
         ) : (
           <Route path='/' element={<Landing />} />
         )}
-        <Route path="/categories/:type" element={<CampaignList campaigns={campaigns} />} />
+        <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
         <Route path='/signup' element={<SignupForm setUser={setUser} />} />
         <Route path='/signin' element={<SigninForm setUser={setUser} />} />
       </Routes>
