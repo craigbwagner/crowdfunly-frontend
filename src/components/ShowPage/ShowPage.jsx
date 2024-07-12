@@ -1,13 +1,11 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as campaignService from "../../services/campaignService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function ShowPage({user, handleDeleteCampaign}) {
+function ShowPage({ user, handleDeleteCampaign }) {
   const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchCampaign = async () => {
@@ -43,17 +41,21 @@ function ShowPage({user, handleDeleteCampaign}) {
           timeZone: "UTC",
         })}
       </h3>
-
-      {/* need to create condition to render if youre the creator */}
-      {user ? (campaign.createdBy._id === user._id && (
-        <>
-          <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
-          <button onClick={() => handleDeleteCampaign(campaignId)}>
-            Delete
-          </button>
-        </>
-      )) : null}
-
+      {user
+        ? campaign.createdBy._id === user._id && (
+            <>
+              <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
+              <button onClick={() => handleDeleteCampaign(campaignId)}>
+                Delete
+              </button>
+            </>
+          )
+        : null}
+      {user ? (
+        <Link to={`/contributions/${campaign._id}`}>
+          Contribute to this Campaign
+        </Link>
+      ) : null}
       <p>{campaign.description}</p>
       <h2>Contributions</h2>
     </>
