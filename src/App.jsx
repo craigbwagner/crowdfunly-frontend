@@ -64,20 +64,12 @@ const App = () => {
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/profile/:userId" element={<Profile user={user} />} />
-            <Route
-              path="/campaigns"
-              element={<CampaignsList campaigns={campaigns} />}
-            />
-            <Route
-              path="/campaigns/new"
-              element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
-            />
+            <Route path="/profile/:userId" element={<Profile user={user} campaigns={campaigns} />} />
+            <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
+            <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
             <Route
               path="/campaigns/:campaignId/edit"
-              element={
-                <CampaignForm handleUpdateCampaign={handleUpdateCampaign} />
-              }
+              element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />}
             />
           </>
         ) : (
