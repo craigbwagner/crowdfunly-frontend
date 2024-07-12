@@ -1,4 +1,7 @@
-function Profile({ user }) {
+
+
+
+const Profile = ({ user }) => {
   return (
     <>
       <h1>{user.username}'s Profile</h1>
