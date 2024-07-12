@@ -16,7 +16,15 @@ function CampaignsList(props) {
             <p>{campaign.description}</p>
             <p>Goal: ${campaign.goalAmount}</p>
             <p>Raised: ${campaign.amountRaised}</p>
-            <p>End Date: {new Date(campaign.endDate).toLocaleDateString()}</p>
+            <p>
+              End Date:{" "}
+              {new Date(campaign.endDate).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                timeZone: "UTC",
+              })}
+            </p>
             <p>Type: {campaign.campaignType}</p>
           </li>
         ))}
