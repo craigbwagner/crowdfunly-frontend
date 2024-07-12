@@ -67,3 +67,6 @@ const index = async () => {
       console.log(error);
     }
   };
+
+
+  export { index, show, create, deleteCampaign, update };
