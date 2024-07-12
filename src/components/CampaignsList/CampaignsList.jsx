@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 function CampaignsList(props) {
   console.log(props.campaigns);
   return (
@@ -33,5 +32,4 @@ function CampaignsList(props) {
     </div>
   );
 }
-
 export default CampaignsList;
