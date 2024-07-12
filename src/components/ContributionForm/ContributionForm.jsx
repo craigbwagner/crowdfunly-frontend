@@ -7,6 +7,8 @@ function ContributionForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    navigate(`/campaigns/${campaignId}`);
+  };
 
     return (
       <form onSubmit={handleSubmit}>
