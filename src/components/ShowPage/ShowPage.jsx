@@ -1,9 +1,9 @@
 import React from "react";
 
-function ShowPage() {
+function ShowPage({ campaign }) {
   return (
     <>
-      <div>ShowPage</div>
+      <div>{campaign.title}</div>
     </>
   );
 }
