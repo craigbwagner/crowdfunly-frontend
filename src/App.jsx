@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Dashboard from "./components/Dashboard/Dashboard";
 import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
