@@ -33,13 +33,22 @@ const App = () => {
 
   const handleDeleteCampaign = async (campaignId) => {
     const deleteCampaign = await campaignService.deleteCampaign(campaignId);
-    setCampaigns(campaigns.filter((campaign) => campaign._id !== deleteCampaign._id));
+    setCampaigns(
+      campaigns.filter((campaign) => campaign._id !== deleteCampaign._id)
+    );
     navigate("/campaigns");
   };
 
   const handleUpdateCampaign = async (campaignId, campaignFormData) => {
-    const updateCampaign = await campaignService.update(campaignId, campaignFormData);
-    setCampaigns(campaigns.map((campaign) => (campaignId === campaign._id ? updateCampaign : campaign)));
+    const updateCampaign = await campaignService.update(
+      campaignId,
+      campaignFormData
+    );
+    setCampaigns(
+      campaigns.map((campaign) =>
+        campaignId === campaign._id ? updateCampaign : campaign
+      )
+    );
     navigate(`/campaigns/${campaignId}`);
   };
 
@@ -67,8 +76,16 @@ const App = () => {
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
-        <Route path="/campaigns/:campaignId" element={<ShowPage handleDeleteCampaign={handleDeleteCampaign} />} />
+        <Route
+          path="/campaigns"
+          element={<CampaignsList campaigns={campaigns} />}
+        />
+        <Route
+          path="/campaigns/:campaignId"
+          element={
+            <ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />
+          }
+        />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>

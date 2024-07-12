@@ -59,6 +59,7 @@ const CampaignForm = (props) => {
             value={formData.campaignType}
             onChange={handleChange}
           >
+            <option value="" disabled>Select</option>
             <option value="Charity">Charity</option>
             <option value="Education">Education</option>
             <option value="Creative">Creative</option>
