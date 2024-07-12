@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { AuthedUserContext } from '../../App';
 import { Link } from "react-router-dom";
 
-function ShowPage() {
+function ShowPage(props) {
   const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
 
