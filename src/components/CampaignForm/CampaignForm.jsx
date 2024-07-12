@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import * as campaignService from "../../services/campaignService";
 
 const CampaignForm = (props) => {
   const [formData, setFormData] = useState({
@@ -19,11 +21,14 @@ const CampaignForm = (props) => {
     props.handleAddCampaign(formData);
   };
 
+  const { campaignId } = useParams();
+
   return (
     <>
       <main>
         <h1>New Campaign Form</h1>
         <form onSubmit={handleSubmit}>
+          <h2>{campaignId ? "Update" : "Create"} Campaign</h2>
           <label htmlFor="title-input">Title </label>
           <input
             required
