@@ -64,7 +64,6 @@ const App = () => {
       <Routes>
         {user ? (
           <>
-            <Route path="/" element={<Dashboard user={user} />} />
             <Route
               path="/profile/:userId"
               element={<Profile user={user} campaigns={campaigns} />}
@@ -95,6 +94,7 @@ const App = () => {
           </>
         )}
 
+        <Route path="/" element={<Landing />} />
         <Route
           path="/campaigns"
           element={<CampaignsList campaigns={campaigns} />}
