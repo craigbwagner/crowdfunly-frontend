@@ -6,6 +6,8 @@ import Landing from './components/Landing/Landing';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService';
+import CampaignList from './components/CampaignList';
+
 
 
 const App = () => {
@@ -25,7 +27,7 @@ const App = () => {
         ) : (
           <Route path='/' element={<Landing />} />
         )}
-
+        <Route path="/categories/:type" element={<CampaignList campaigns={campaigns} />} />
         <Route path='/signup' element={<SignupForm setUser={setUser} />} />
         <Route path='/signin' element={<SigninForm setUser={setUser} />} />
       </Routes>
