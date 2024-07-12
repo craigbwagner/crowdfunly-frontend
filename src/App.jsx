@@ -49,6 +49,10 @@ const App = () => {
           path="/users/signin"
           element={<SigninForm setUser={setUser} />}
         />
+        <Route
+          path="/campaigns/:campaignId"
+          element={<SigninForm setUser={setUser} />}
+        />
       </Routes>
     </>
   );
