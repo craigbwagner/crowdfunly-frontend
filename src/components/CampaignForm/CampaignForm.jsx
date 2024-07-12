@@ -23,6 +23,14 @@ const CampaignForm = (props) => {
 
   const { campaignId } = useParams();
 
+  useEffect(() => {
+    const fetchCampaign = async () => {
+      const campaignData = await campaignService.show(campaignId);
+      setFormData(campaignData);
+    };
+    if (campaignId) fetchCampaign();
+  }, [campaignId]);
+
   return (
     <>
       <main>
