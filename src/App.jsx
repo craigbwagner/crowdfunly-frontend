@@ -70,7 +70,7 @@ const App = () => {
               element={<CampaignsList campaigns={campaigns} />}
             />
             <Route
-              path="/campaigns/create-campaign"
+              path="/campaigns/new"
               element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
             />
             <Route
