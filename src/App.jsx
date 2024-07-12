@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -9,12 +9,21 @@ import * as authService from "../src/services/authService";
 import CampaignList from "./components/CampaignsList/CampaignsList";
 import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
+import ShowPage from "./components/ShowPage/ShowPage";
 import * as campaignService from "../src/services/campaignService";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [campaigns, setCampaigns] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchAllCampaigns = async () => {
+      const campaignsData = await campaignService.index();
+      setCampaigns(campaignsData);
+    };
+    if (user) fetchAllCampaigns();
+  }, [user]);
 
   const handleAddCampaign = async (campaignFormData) => {
     const newCampaign = await campaignService.create(campaignFormData);
@@ -24,13 +33,22 @@ const App = () => {
 
   const handleDeleteCampaign = async (campaignId) => {
     const deleteCampaign = await campaignService.deleteCampaign(campaignId);
-    setCampaigns(campaigns.filter((campaign) => campaign._id !== deleteCampaign._id));
+    setCampaigns(
+      campaigns.filter((campaign) => campaign._id !== deleteCampaign._id),
+    );
     navigate("/campaigns");
   };
 
   const handleUpdateCampaign = async (campaignId, campaignFormData) => {
-    const updateCampaign = await campaignService.update(campaignId, campaignFormData);
-    setCampaigns(campaigns.map((campaign) => (campaignId === campaign._id ? updateCampaign : campaign)));
+    const updateCampaign = await campaignService.update(
+      campaignId,
+      campaignFormData,
+    );
+    setCampaigns(
+      campaigns.map((campaign) =>
+        campaignId === campaign._id ? updateCampaign : campaign,
+      ),
+    );
     navigate(`/campaigns/${campaignId}`);
   };
 
@@ -47,20 +65,32 @@ const App = () => {
           <>
             <Route path="/" element={<Dashboard user={user} />} />
             <Route path="/profile/:userId" element={<Profile user={user} />} />
-            <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
-            <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
-            <Route path="/campaigns/:campaignId" element={<CampaignDetails handleDeleteCampaign={handleDeleteCampaign} />} />
-            <Route path="/campaigns/:campaignId/edit" element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />} />
-
+            <Route
+              path="/campaigns"
+              element={<CampaignsList campaigns={campaigns} />}
+            />
+            <Route
+              path="/campaigns/new"
+              element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
+            />
+            <Route
+              path="/campaigns/:campaignId/edit"
+              element={
+                <CampaignForm handleUpdateCampaign={handleUpdateCampaign} />
+              }
+            />
           </>
         ) : (
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
         <Route
-          path="/campaigns/create-campaign"
-          element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
+          path="/campaigns"
+          element={<CampaignsList campaigns={campaigns} />}
+        />
+        <Route
+          path="/campaigns/:campaignId"
+          element={<ShowPage handleDeleteCampaign={handleDeleteCampaign} />}
         />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
