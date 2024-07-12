@@ -22,8 +22,8 @@ const App = () => {
       const campaignsData = await campaignService.index();
       setCampaigns(campaignsData);
     };
-    if (user) fetchAllCampaigns();
-  }, [user]);
+    fetchAllCampaigns();
+  }, []);
 
   const handleAddCampaign = async (campaignFormData) => {
     const newCampaign = await campaignService.create(campaignFormData);
