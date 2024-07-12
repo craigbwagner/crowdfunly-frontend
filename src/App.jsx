@@ -70,12 +70,8 @@ const App = () => {
               element={<CampaignsList campaigns={campaigns} />}
             />
             <Route
-              path="/campaigns/new"
+              path="/campaigns/create-campaign"
               element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
-            />
-            <Route
-              path="/campaigns/:campaignId"
-              element={<ShowPage handleDeleteCampaign={handleDeleteCampaign} />}
             />
             <Route
               path="/campaigns/:campaignId/edit"
@@ -93,8 +89,8 @@ const App = () => {
           element={<CampaignsList campaigns={campaigns} />}
         />
         <Route
-          path="/campaigns/create-campaign"
-          element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
+          path="/campaigns/:campaignId"
+          element={<ShowPage handleDeleteCampaign={handleDeleteCampaign} />}
         />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
