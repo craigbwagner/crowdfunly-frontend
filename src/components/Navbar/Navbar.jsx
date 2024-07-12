@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 const NavBar = ({ user, handleSignout }) => {
-  const { userId } = useParams();
+
   return (
     <>
       {user ? (
