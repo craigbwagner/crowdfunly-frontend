@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import * as campaignService from "../../services/campaignService";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthedUserContext } from '../../App';
 import { Link } from "react-router-dom";
 
 function ShowPage() {
