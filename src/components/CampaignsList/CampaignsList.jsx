@@ -10,6 +10,12 @@ function CampaignsList(props) {
     setSelectedType(event.target.value);
   };
 
+  const filteredCampaigns = selectedType
+    ? props.campaigns.filter(
+        (campaign) => campaign.campaignType === selectedType
+      )
+    : props.campaigns;
+
   return (
     <div>
       <h1>Available Campaigns</h1>
