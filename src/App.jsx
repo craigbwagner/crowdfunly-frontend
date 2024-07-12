@@ -9,6 +9,9 @@ import * as authService from '../src/services/authService';
 import CampaignList from './components/CampaignList';
 import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
+import * as campaignService from '../src/services/campaignService';
+
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
