@@ -38,12 +38,10 @@ function CampaignsList(props) {
       </select>
 
       <ul>
-        {props.campaigns.map((campaign) => (
+        {filteredCampaigns.map((campaign) => (
           <li key={campaign._id}>
             <h2>
-              <Link key={campaign._id} to={`/campaigns/${campaign._id}`}>
-                {campaign.title}
-              </Link>
+              <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
             </h2>
             <p>{campaign.description}</p>
             <p>Goal: ${campaign.goalAmount}</p>
