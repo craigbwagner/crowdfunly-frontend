@@ -25,13 +25,22 @@ const App = () => {
 
   const handleDeleteCampaign = async (campaignId) => {
     const deleteCampaign = await campaignService.deleteCampaign(campaignId);
-    setCampaigns(campaigns.filter((campaign) => campaign._id !== deleteCampaign._id));
+    setCampaigns(
+      campaigns.filter((campaign) => campaign._id !== deleteCampaign._id),
+    );
     navigate("/campaigns");
   };
 
   const handleUpdateCampaign = async (campaignId, campaignFormData) => {
-    const updateCampaign = await campaignService.update(campaignId, campaignFormData);
-    setCampaigns(campaigns.map((campaign) => (campaignId === campaign._id ? updateCampaign : campaign)));
+    const updateCampaign = await campaignService.update(
+      campaignId,
+      campaignFormData,
+    );
+    setCampaigns(
+      campaigns.map((campaign) =>
+        campaignId === campaign._id ? updateCampaign : campaign,
+      ),
+    );
     navigate(`/campaigns/${campaignId}`);
   };
 
@@ -48,17 +57,33 @@ const App = () => {
           <>
             <Route path="/" element={<Dashboard user={user} />} />
             <Route path="/profile/:userId" element={<Profile user={user} />} />
-            <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
-            <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
-            <Route path="/campaigns/:campaignId" element={<CampaignDetails handleDeleteCampaign={handleDeleteCampaign} />} />
-            <Route path="/campaigns/:campaignId/edit" element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />} />
-
+            <Route
+              path="/campaigns"
+              element={<CampaignsList campaigns={campaigns} />}
+            />
+            <Route
+              path="/campaigns/new"
+              element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
+            />
+            <Route
+              path="/campaigns/:campaignId"
+              element={<ShowPage handleDeleteCampaign={handleDeleteCampaign} />}
+            />
+            <Route
+              path="/campaigns/:campaignId/edit"
+              element={
+                <CampaignForm handleUpdateCampaign={handleUpdateCampaign} />
+              }
+            />
           </>
         ) : (
           <Route path="/" element={<Landing />} />
         )}
 
-        <Route path="/campaigns" element={<CampaignList campaigns={campaigns} />} />
+        <Route
+          path="/campaigns"
+          element={<CampaignsList campaigns={campaigns} />}
+        />
         <Route
           path="/campaigns/create-campaign"
           element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
