@@ -6,6 +6,10 @@ function CampaignsList(props) {
 
   const [selectedType, setSelectedType] = useState("");
 
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+  };
+
   return (
     <div>
       <h1>Available Campaigns</h1>
