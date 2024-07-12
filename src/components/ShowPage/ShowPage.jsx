@@ -42,7 +42,9 @@ function ShowPage() {
         })}
       </h3>
 
-        <Link to={`/campaigns/${campaign._id}/edit`}>Edit Campaign</Link>
+        {/* need to create condition to render if youre the creator */}
+        <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
+        <button onClick={() => props.handleDeleteCampaign(campaignId)}>Delete</button>
 
       <p>{campaign.description}</p>
       <h2>Contributions</h2>
