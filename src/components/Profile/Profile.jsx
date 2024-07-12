@@ -19,6 +19,7 @@ const Profile = ({ user, campaigns }) => {
               <p>End Date: {new Date(campaign.endDate).toLocaleDateString()}</p>
               <p>Type: {campaign.campaignType}</p>
               <button onClick={() => onEditCampaign(campaign._id)}>Edit</button>
+              <button onClick={() => onDeleteCampaign(campaign._id)}>Delete</button>
             </li>
           ))}
         </ul>
