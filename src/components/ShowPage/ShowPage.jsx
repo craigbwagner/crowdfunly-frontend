@@ -13,13 +13,11 @@ function ShowPage({user, handleDeleteCampaign}) {
     const fetchCampaign = async () => {
       const campaignData = await campaignService.show(campaignId);
       setCampaign(campaignData);
-      console.log("campaignData", campaignData);
     };
     fetchCampaign();
   }, [campaignId]);
 
   if (!campaign) return <main>Loading...</main>;
-  console.log("userData", user);
   return (
     <>
       <h1>{campaign.title}</h1>
