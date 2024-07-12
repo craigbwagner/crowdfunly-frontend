@@ -1,9 +1,11 @@
-import (useState) from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
 
 function CampaignsList(props) {
   console.log(props.campaigns);
+
+  const [selectedType, setSelectedType] = useState("");
+
   return (
     <div>
       <h1>Available Campaigns</h1>
