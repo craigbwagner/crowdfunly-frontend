@@ -1,15 +1,16 @@
+import React from 'react';
 import { Link } from "react-router-dom";
+import './CampaignsList.css';
 
-function CampaignsList(props) {
-  console.log(props.campaigns);
+function CampaignsList({ campaigns }) {
   return (
-    <div>
+    <div className="campaigns-container">
       <h1>Available Campaigns</h1>
-      <ul>
-        {props.campaigns.map((campaign) => (
-          <li key={campaign._id}>
+      <div className="campaigns-grid">
+        {campaigns.map(campaign => (
+          <div key={campaign._id} className="campaign-card">
             <h2>
-              <Link key={campaign._id} to={`/campaigns/${campaign._id}`}>
+              <Link to={`/campaigns/${campaign._id}`}>
                 {campaign.title}
               </Link>
             </h2>
@@ -26,10 +27,11 @@ function CampaignsList(props) {
               })}
             </p>
             <p>Type: {campaign.campaignType}</p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
+
 export default CampaignsList;

@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 const Profile = ({ user, campaigns }) => {
   const userCampaigns = campaigns.filter((campaign) => campaign.createdBy._id === user._id);

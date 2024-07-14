@@ -11,6 +11,9 @@ import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
 import ShowPage from "./components/ShowPage/ShowPage";
 import * as campaignService from "../src/services/campaignService";
+import "./App.css";
+
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
