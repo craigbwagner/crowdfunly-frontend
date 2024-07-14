@@ -12,8 +12,10 @@ import Profile from "./components/Profile/Profile";
 import ShowPage from "./components/ShowPage/ShowPage";
 import * as campaignService from "../src/services/campaignService";
 import "./App.css";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
-
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -62,6 +64,7 @@ const App = () => {
 
   return (
     <>
+    <Elements stripe={stripePromise}></Elements>
       <Navbar user={user} handleSignout={handleSignout} />
       <Routes>
         {user ? (
