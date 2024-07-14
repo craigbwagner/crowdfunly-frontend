@@ -61,3 +61,5 @@ const PaymentForm = () => {
     </div>
   );
 };
+
+export default PaymentForm;
