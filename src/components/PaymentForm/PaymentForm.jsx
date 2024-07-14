@@ -17,7 +17,7 @@ const PaymentForm = () => {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const clientSecret = await simulateCreatePaymentIntent();
+        const clientSecret = await simulateCreatePaymentIntent(id);
         const confirmPayment = await stripe.confirmCardPayment(clientSecret, {
           payment_method: id,
         });
@@ -29,15 +29,17 @@ const PaymentForm = () => {
       } catch (error) {
         console.log(error.message);
       }
+    } else {
+      console.log(error.message);
     }
+  };
 
-    const simulateCreatePaymentIntent = async () => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve("simulated_client_secret");
-        }, 1000);
-      });
-    };
+  const simulateCreatePaymentIntent = async (id) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(`${id}_secret_simulatedsecret`);
+      }, 1000);
+    });
   };
 
   return (
