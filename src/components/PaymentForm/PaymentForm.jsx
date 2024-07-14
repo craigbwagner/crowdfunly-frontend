@@ -31,9 +31,21 @@ const PaymentForm = () => {
             } else {
                 console.log(error.message)
             }
-        }
+        };
+
+        const simulateCreatePaymentIntent = async () => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve('simulated_client_secret');
+                }, 1000);
+                });
+            };
+        };
+
+        return (
 
 
+        );
 
 
 }
