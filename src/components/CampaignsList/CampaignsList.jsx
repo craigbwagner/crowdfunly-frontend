@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './CampaignsList.css';
+
 
 function CampaignsList({ campaigns }) {
   return (
