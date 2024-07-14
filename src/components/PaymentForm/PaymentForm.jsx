@@ -4,6 +4,8 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 const PaymentForm = () => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
   const elements = useElements();
 
   const handleSubmit = async (event) => {
@@ -17,7 +19,15 @@ const PaymentForm = () => {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const clientSecret = await simulateCreatePaymentIntent(id);
+        const response = await fetch('http://localhost:3000/stripe/create-payment-intent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ amount: 500 }),
+        });
+        const data = await response.json();
+        const { clientSecret } = data;
         const confirmPayment = await stripe.confirmCardPayment(clientSecret, {
           payment_method: id,
         });
@@ -34,21 +44,33 @@ const PaymentForm = () => {
     }
   };
 
-  const simulateCreatePaymentIntent = async (id) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(`${id}_secret_simulatedsecret`);
-      }, 1000);
-    });
-  };
-
   return (
     <div>
       {!success ? (
         <form onSubmit={handleSubmit}>
           <fieldset>
             <div>
-              <CardElement />
+              <label>
+              <input
+                  type="text"
+                  value={name}
+                  onChange={(evt) => setName(evt.target.value)}
+                  required
+                />
+              </label>
+              </div>
+              <div>
+              <label>
+                Amount (USD)
+                <input
+                  type="number"
+                  value={amount}
+                  onChange={(evt) => setAmount(evt.target.value)}
+                  required
+                />
+              </label>
+              <CardElement
+              />
             </div>
           </fieldset>
           <button type="submit" disabled={!stripe}>
