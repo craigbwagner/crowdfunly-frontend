@@ -13,7 +13,25 @@ const PaymentForm = () => {
             type: 'card',
             card: elements.getElement(CardElement),
           });
-
+        
+        if (!error) {
+            try {
+                const { id } = paymentMethod;
+                const clientSecret = await simulateCreatePaymentIntent();
+                const confirmPayment = await stripe.confirmCardPayment(clientSecret, {
+                    payment_method: id, 
+                });
+                if (confirmPayment.error) {
+                    console.log(confirmPayment.error.message);
+                } else {
+                    setSuccess(true);
+                }
+            } catch (error) {
+                console.log(error)
+            } else {
+                console.log(error.message)
+            }
+        }
 
 
 
