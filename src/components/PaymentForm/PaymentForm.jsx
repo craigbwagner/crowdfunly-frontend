@@ -6,6 +6,9 @@ const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
 
 
 
