@@ -19,6 +19,7 @@ import PaymentForm from "./components/PaymentForm/PaymentForm";
 
 const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
+
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [campaigns, setCampaigns] = useState([]);
