@@ -24,7 +24,7 @@ const PaymentForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount: 500 }),
+          body: JSON.stringify({ amount: parseInt(amount) * 100 }),
         });
         const data = await response.json();
         const { clientSecret } = data;
