@@ -50,16 +50,25 @@ const PaymentForm = () => {
       {!success ? (
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <div>
-              <label>
-                <input type="text" value={name} onChange={(evt) => setName(evt.target.value)} required />
-              </label>
+            <div className="form-group">
+              <input
+                type="text"
+                value={name}
+                onChange={(evt) => setName(evt.target.value)}
+                required
+                placeholder=" "
+              />
+              <label>Name</label>
             </div>
-            <div>
-              <label>
-                Amount (USD)
-                <input type="number" value={amount} onChange={(evt) => setAmount(evt.target.value)} required />
-              </label>
+            <div className="form-group">
+              <input
+                type="number"
+                value={amount}
+                onChange={(evt) => setAmount(evt.target.value)}
+                required
+                placeholder=" "
+              />
+              <label>Amount (USD)</label>
               <CardElement className="StripeElement" />
             </div>
           </fieldset>
