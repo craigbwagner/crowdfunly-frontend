@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./PaymentForm.css";
+import { useParams } from "react-router-dom";
 
-
-const PaymentForm = () => {
+const PaymentForm = ({ user }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
+  const { campaignId } = useParams();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    addContribution();
 
     const { error, paymentMethod } = await createPaymentMethod();
     if (error) return console.log(error.message);
@@ -21,7 +23,11 @@ const PaymentForm = () => {
       payment_method: paymentMethod.id,
     });
 
-    confirmPayment.error ? console.log(confirmPayment.error.message) : setSuccess(true);
+    if (confirmPayment.error) {
+      console.log(confirmPayment.error.message);
+    } else {
+      setSuccess(true);
+    }
   };
 
   const createPaymentMethod = async () => {
@@ -44,6 +50,18 @@ const PaymentForm = () => {
     return data.clientSecret;
   };
 
+  const addContribution = async () => {
+    const response = await fetch(`http://localhost:3000/contributions/${campaignId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ campaignId, amount: amount, contributedBy: user._id }),
+    });
+    console.log(amount);
+    return response.json();
+  };
 
   return (
     <div className="payment-form">
@@ -51,13 +69,7 @@ const PaymentForm = () => {
         <form onSubmit={handleSubmit}>
           <fieldset>
             <div className="form-group">
-              <input
-                type="text"
-                value={name}
-                onChange={(evt) => setName(evt.target.value)}
-                required
-                placeholder=" "
-              />
+              <input type="text" value={name} onChange={(evt) => setName(evt.target.value)} required placeholder=" " />
               <label>Name</label>
             </div>
             <div className="form-group">
