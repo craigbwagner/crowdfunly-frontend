@@ -1,8 +1,38 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { AgGridReact } from "ag-grid-react";
+import "@ag-grid-community/styles/ag-grid.css";
+import "@ag-grid-community/styles/ag-theme-quartz.css";
 
 function CampaignsList({ campaigns }) {
   const [selectedType, setSelectedType] = useState("");
+  console.log("Campaigns:", campaigns);
+  const campaignsArr = campaigns.map((campaign) => ({
+    Title: campaign.title,
+    Goal: campaign.goalAmount,
+    amountRaised: campaign.amountRaised,
+    endDate: new Date(campaign.endDate).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC",
+    }),
+    Type: campaign.campaignType,
+  }));
+  console.log("CampaignsArr:", campaignsArr);
+
+  // Row Data: The data to be displayed.
+  const [rowData, setRowData] = useState(campaignsArr);
+  console.log("Rowdata:", rowData);
+
+  // Column Definitions: Defines the columns to be displayed.
+  const [colDefs, setColDefs] = useState([
+    { field: "Title" },
+    { field: "Goal" },
+    { field: "Amount Raised" },
+    { field: "End Date" },
+    { field: "Type" },
+  ]);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -33,7 +63,14 @@ function CampaignsList({ campaigns }) {
         <option value="Environment">Environment</option>
       </select>
 
-      <table id="campaignsTable" className="display">
+      <div
+        className="ag-theme-quartz" // applying the Data Grid theme
+        style={{ height: 500 }} // the Data Grid will fill the size of the parent container
+      >
+        <AgGridReact rowData={rowData} columnDefs={colDefs} />
+      </div>
+
+      {/* <table id="campaignsTable" className="display">
         <thead>
           <tr>
             <th>Campaign Title</th>
@@ -65,7 +102,7 @@ function CampaignsList({ campaigns }) {
         <tfoot>
           <tr></tr>
         </tfoot>
-      </table>
+      </table> */}
 
       <ul>
         {campaigns.length === 0 ? (
