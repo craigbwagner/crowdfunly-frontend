@@ -71,7 +71,7 @@ const App = () => {
             <Route path="/profile/:userId/payment" element={<PaymentForm />} /> 
           </>
         ) : (
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<CampaignsList campaigns={campaigns} />} />
         )}
         <Route
           path="/campaigns"
