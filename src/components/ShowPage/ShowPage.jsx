@@ -52,7 +52,7 @@ function ShowPage({ user, handleDeleteCampaign }) {
           )
         : null}
       {user ? (
-        <Link to={`/profile/${user._id}/payment`}>
+        <Link to={`/contributions/${campaign._id}`}>
           Contribute to this Campaign
         </Link>
       ) : (
