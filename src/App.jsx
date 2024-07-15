@@ -10,7 +10,12 @@ import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
 import ShowPage from "./components/ShowPage/ShowPage";
 import * as campaignService from "../src/services/campaignService";
-import ContributionForm from "./components/ContributionForm/ContributionForm";
+import "./App.css";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import PaymentForm from "./components/PaymentForm/PaymentForm";
+
+const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -28,7 +33,7 @@ const App = () => {
   const handleAddCampaign = async (campaignFormData) => {
     const newCampaign = await campaignService.create(campaignFormData);
     setCampaigns([newCampaign, ...campaigns]);
-    navigate("/campaigns");
+    navigate(`/campaigns/${newCampaign._id}`);
   };
 
   const handleDeleteCampaign = async (campaignId) => {
@@ -58,23 +63,15 @@ const App = () => {
   };
 
   return (
-    <>
+    <Elements stripe={stripePromise}>
       <Navbar user={user} handleSignout={handleSignout} />
       <Routes>
         {user ? (
           <>
-            <Route
-              path="/profile/:userId"
-              element={<Profile user={user} campaigns={campaigns} />}
-            />
-            <Route
-              path="/campaigns"
-              element={<CampaignsList campaigns={campaigns} />}
-            />
-            <Route
-              path="/campaigns/new"
-              element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
-            />
+            <Route path="/" element={<Dashboard user={user} />} />
+            <Route path="/profile/:userId" element={<Profile user={user} campaigns={campaigns} onEditCampaign={handleUpdateCampaign} onDeleteCampaign={handleDeleteCampaign} />} />
+            <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
+            <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
             <Route
               path="/campaigns/:campaignId/edit"
               element={
@@ -85,6 +82,7 @@ const App = () => {
               path="/contributions/:campaignId"
               element={<ContributionForm />}
             />
+            <Route path="/profile/:userId/payment" element={<PaymentForm />} /> 
           </>
         ) : (
           <>
@@ -92,7 +90,6 @@ const App = () => {
             <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           </>
         )}
-
         <Route path="/" element={<Landing />} />
         <Route
           path="/campaigns"
@@ -105,7 +102,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </Elements>
   );
 };
 
