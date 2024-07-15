@@ -7,10 +7,31 @@ import "@ag-grid-community/styles/ag-theme-quartz.css";
 function CampaignsList({ campaigns }) {
   const [selectedType, setSelectedType] = useState("");
   const [rowData, setRowData] = useState([]);
+  const [colDefs, setColDefs] = useState([
+    {
+      field: "Title",
+      filter: true,
+      filterParams: {
+        closeOnApply: true,
+        filterOptions: ["contains"],
+      },
+    },
+    { field: "Goal" },
+    { field: "Amount Raised" },
+    { field: "End Date" },
+    {
+      field: "Type",
+      filter: true,
+      filterParams: {
+        closeOnApply: true,
+        filterOptions: ["contains"],
+      },
+    },
+  ]);
 
-  // Row Data: The data to be displayed.
   useEffect(() => {
     const setRows = async () => {
+      console.log(campaigns);
       const campaignsArr = await campaigns.map((campaign) => ({
         Title: campaign.title,
         Goal: campaign.goalAmount,
@@ -27,15 +48,6 @@ function CampaignsList({ campaigns }) {
     };
     setRows();
   }, [campaigns]);
-
-  // Column Definitions: Defines the columns to be displayed.
-  const [colDefs, setColDefs] = useState([
-    { field: "Title" },
-    { field: "Goal" },
-    { field: "Amount Raised" },
-    { field: "End Date" },
-    { field: "Type" },
-  ]);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
