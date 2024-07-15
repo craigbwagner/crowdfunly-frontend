@@ -17,7 +17,6 @@ const CampaignForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("formData", formData);
     if (campaignId) {
       props.handleUpdateCampaign(campaignId, formData);
     } else {
