@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import "./PaymentForm.css";
+
 
 const PaymentForm = () => {
   const stripe = useStripe();

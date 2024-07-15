@@ -1,0 +1,17 @@
+.payment-form {
+    max-width: 300px;
+}
+
+.payment-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-form fieldset {
+    border: none;
+}
+
+.payment-form label {
+    display: block;
+}
+
