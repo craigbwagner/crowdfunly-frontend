@@ -61,7 +61,7 @@ const App = () => {
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/profile/:userId" element={<Profile user={user} campaigns={campaigns} />} />
+            <Route path="/profile/:userId" element={<Profile user={user} campaigns={campaigns} onEditCampaign={handleUpdateCampaign} onDeleteCampaign={handleDeleteCampaign} />} />
             <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
             <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
             <Route
