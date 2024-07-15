@@ -108,7 +108,7 @@ const App = () => {
             <Route path="/signin" element={<SigninForm setUser={setUser} />} />
           </>
         )}
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<CampaignsList campaigns={campaigns} />} />
         <Route
           path="/campaigns"
           element={<CampaignsList campaigns={campaigns} />}
