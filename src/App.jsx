@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
@@ -16,7 +15,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "./components/PaymentForm/PaymentForm";
 
 const stripePromise = loadStripe(
-  import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY
+  import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY,
 );
 
 const App = () => {
