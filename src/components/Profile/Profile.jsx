@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const Profile = ({ user, campaigns, onDeleteCampaign}) => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
   const userCampaigns = campaigns.filter((campaign) => campaign.createdBy._id === user._id);
 
   const handleEdit = (campaignId) => {
@@ -12,7 +12,6 @@ const Profile = ({ user, campaigns, onDeleteCampaign}) => {
     await onDeleteCampaign(campaignId);
     navigate(`/profile/${user._id}`);
   }
-
 
   return (
     <div>

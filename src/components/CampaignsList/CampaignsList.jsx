@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function CampaignsList(props) {
-  console.log(props.campaigns);
-
   const [selectedType, setSelectedType] = useState("");
 
   const handleTypeChange = (event) => {
@@ -17,7 +15,7 @@ function CampaignsList(props) {
     : props.campaigns;
 
   return (
-    <div>
+    <div className="campaigns-container">
       <h1>Available Campaigns</h1>
       <label htmlFor="campaignFilterType">Filter By Campaign Type: </label>
       <select
@@ -68,4 +66,5 @@ function CampaignsList(props) {
     </div>
   );
 }
+
 export default CampaignsList;
