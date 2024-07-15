@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import DataTable from "datatables.net-dt";
 
-function CampaignsList(props) {
+function CampaignsList({ campaigns }) {
   const [selectedType, setSelectedType] = useState("");
 
   const handleTypeChange = (event) => {
@@ -10,10 +9,8 @@ function CampaignsList(props) {
   };
 
   const filteredCampaigns = selectedType
-    ? props.campaigns.filter(
-        (campaign) => campaign.campaignType === selectedType,
-      )
-    : props.campaigns;
+    ? campaigns.filter((campaign) => campaign.campaignType === selectedType)
+    : campaigns;
 
   return (
     <div className="campaigns-container">
@@ -47,8 +44,8 @@ function CampaignsList(props) {
           </tr>
         </thead>
         <tbody>
-          {props.campaigns.map((campaign) => (
-            <tr>
+          {campaigns.map((campaign) => (
+            <tr key={campaign._id}>
               <td>{campaign.title}</td>
               <td>{campaign.goalAmount}</td>
               <td>{campaign.amountRaised}</td>
@@ -71,7 +68,7 @@ function CampaignsList(props) {
       </table>
 
       <ul>
-        {props.campaigns.length === 0 ? (
+        {campaigns.length === 0 ? (
           <p>No campaigns found.</p>
         ) : filteredCampaigns.length > 0 ? (
           filteredCampaigns.map((campaign) => (
