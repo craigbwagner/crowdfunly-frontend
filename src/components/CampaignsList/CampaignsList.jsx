@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import DataTable from "datatables.net-dt";
 
 function CampaignsList(props) {
   const [selectedType, setSelectedType] = useState("");
@@ -10,7 +11,7 @@ function CampaignsList(props) {
 
   const filteredCampaigns = selectedType
     ? props.campaigns.filter(
-        (campaign) => campaign.campaignType === selectedType
+        (campaign) => campaign.campaignType === selectedType,
       )
     : props.campaigns;
 
@@ -34,6 +35,40 @@ function CampaignsList(props) {
         <option value="Events">Events</option>
         <option value="Environment">Environment</option>
       </select>
+
+      <table id="campaignsTable" className="display">
+        <thead>
+          <tr>
+            <th>Campaign Title</th>
+            <th>Goal</th>
+            <th>Raised</th>
+            <th>End Date</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.campaigns.map((campaign) => (
+            <tr>
+              <td>{campaign.title}</td>
+              <td>{campaign.goalAmount}</td>
+              <td>{campaign.amountRaised}</td>
+              <td>
+                End Date:{" "}
+                {new Date(campaign.endDate).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  timeZone: "UTC",
+                })}
+              </td>
+              <td>{campaign.campaignType}</td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr></tr>
+        </tfoot>
+      </table>
 
       <ul>
         {props.campaigns.length === 0 ? (
