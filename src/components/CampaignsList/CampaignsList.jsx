@@ -1,29 +1,32 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 
 function CampaignsList({ campaigns }) {
   const [selectedType, setSelectedType] = useState("");
-  console.log("Campaigns:", campaigns);
-  const campaignsArr = campaigns.map((campaign) => ({
-    Title: campaign.title,
-    Goal: campaign.goalAmount,
-    amountRaised: campaign.amountRaised,
-    endDate: new Date(campaign.endDate).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-      timeZone: "UTC",
-    }),
-    Type: campaign.campaignType,
-  }));
-  console.log("CampaignsArr:", campaignsArr);
+  const [rowData, setRowData] = useState([]);
 
   // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState(campaignsArr);
-  console.log("Rowdata:", rowData);
+  useEffect(() => {
+    const setRows = async () => {
+      const campaignsArr = await campaigns.map((campaign) => ({
+        Title: campaign.title,
+        Goal: campaign.goalAmount,
+        amountRaised: campaign.amountRaised,
+        endDate: new Date(campaign.endDate).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "UTC",
+        }),
+        Type: campaign.campaignType,
+      }));
+      setRowData(campaignsArr);
+    };
+    setRows();
+  }, [campaigns]);
 
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState([
