@@ -58,7 +58,7 @@ const PaymentForm = () => {
                 Amount (USD)
                 <input type="number" value={amount} onChange={(evt) => setAmount(evt.target.value)} required />
               </label>
-              <CardElement />
+              <CardElement className="StripeElement" />
             </div>
           </fieldset>
           <button type="submit" disabled={!stripe}>
