@@ -8,9 +8,6 @@ const NavBar = ({ user, handleSignout }) => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/campaigns">Browse Campaigns</Link>
-        </li>
         {user ? (
           <>
             <li>
