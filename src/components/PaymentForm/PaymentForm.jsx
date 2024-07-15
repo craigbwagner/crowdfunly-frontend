@@ -78,7 +78,7 @@ const PaymentForm = () => {
         </form>
       ) : (
         <div className="payment-success">
-          <h2>Payment Successful!</h2>
+          <h3>Payment Successful. Thank you for your contribution.</h3>
         </div>
       )}
     </div>
