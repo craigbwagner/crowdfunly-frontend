@@ -44,7 +44,7 @@ const PaymentForm = () => {
 
 
   return (
-    <div>
+    <div className="payment-form">
       {!success ? (
         <form onSubmit={handleSubmit}>
           <fieldset>
