@@ -15,3 +15,12 @@
     display: block;
 }
 
+.payment-form input[type="text"],
+.payment-form input[type="number"],
+.payment-form .StripeElement {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
