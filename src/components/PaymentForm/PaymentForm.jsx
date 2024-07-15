@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const PaymentForm = () => {
@@ -19,9 +19,7 @@ const PaymentForm = () => {
       payment_method: paymentMethod.id,
     });
 
-    confirmPayment.error
-      ? console.log(confirmPayment.error.message)
-      : setSuccess(true);
+    confirmPayment.error ? console.log(confirmPayment.error.message) : setSuccess(true);
   };
 
   const createPaymentMethod = async () => {
@@ -38,11 +36,13 @@ const PaymentForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: parseInt(amount) * 100 }), 
+      body: JSON.stringify({ amount: parseInt(amount) * 100 }),
     });
     const data = await response.json();
     return data.clientSecret;
   };
+
+
   return (
     <div>
       {!success ? (

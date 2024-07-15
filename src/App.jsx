@@ -16,9 +16,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "./components/PaymentForm/PaymentForm";
 
-
 const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY);
-
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -66,14 +64,20 @@ const App = () => {
             <Route path="/profile/:userId" element={<Profile user={user} campaigns={campaigns} />} />
             <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
             <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
-            <Route path="/campaigns/:campaignId/edit" element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />} />
-            <Route path="/profile/:userId/payment" element={<PaymentForm />} /> {/* Add the payment route */}
+            <Route
+              path="/campaigns/:campaignId/edit"
+              element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />}
+            />
+            <Route path="/profile/:userId/payment" element={<PaymentForm />} /> 
           </>
         ) : (
           <Route path="/" element={<Landing />} />
         )}
         <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
-        <Route path="/campaigns/:campaignId" element={<ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />} />
+        <Route
+          path="/campaigns/:campaignId"
+          element={<ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />}
+        />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>
