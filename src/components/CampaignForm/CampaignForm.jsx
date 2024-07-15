@@ -110,7 +110,8 @@ const CampaignForm = (props) => {
             onChange={handleChange}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit">
+            {campaignId ? "Update" : "Create"} Campaign</button>
         </form>
       </main>
     </>
