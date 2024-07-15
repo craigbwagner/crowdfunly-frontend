@@ -82,7 +82,13 @@ function CampaignsList({ campaigns }) {
         className="ag-theme-quartz" // applying the Data Grid theme
         style={{ height: 500 }} // the Data Grid will fill the size of the parent container
       >
-        <AgGridReact rowData={rowData} columnDefs={colDefs} />
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={colDefs}
+          pagination={true}
+          paginationPageSize={5}
+          paginationPageSizeSelector={[20, 10, 5]}
+        />
       </div>
 
       {/* <table id="campaignsTable" className="display">
