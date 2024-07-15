@@ -51,7 +51,9 @@ function ShowPage({ user, handleDeleteCampaign }) {
         ? campaign.createdBy._id === user._id && (
             <>
               <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
-              <button onClick={() => handleDeleteCampaign(campaignId)}>Delete</button>
+              <button onClick={confirmDelete} type="button">
+                Delete
+              </button>
             </>
           )
         : null}
