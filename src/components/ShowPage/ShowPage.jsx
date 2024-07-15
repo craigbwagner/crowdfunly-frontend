@@ -15,6 +15,12 @@ function ShowPage({ user, handleDeleteCampaign }) {
     fetchCampaign();
   }, [campaignId]);
 
+  const confirmDelete = async () => {
+    if (window.confirm("Are you sure you want to delete this campaign?")) {
+      await handleDeleteCampaign(campaignId);
+    }
+  };
+
   if (!campaign) return <main>Loading...</main>;
   return (
     <>
@@ -45,16 +51,14 @@ function ShowPage({ user, handleDeleteCampaign }) {
         ? campaign.createdBy._id === user._id && (
             <>
               <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
-              <button onClick={() => handleDeleteCampaign(campaignId)}>
+              <button onClick={confirmDelete} type="button">
                 Delete
               </button>
             </>
           )
         : null}
       {user ? (
-        <Link to={`/contributions/${campaign._id}`}>
-          Contribute to this Campaign
-        </Link>
+        <Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link>
       ) : (
         <h3>Create an account to contribute</h3>
       )}

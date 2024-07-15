@@ -13,6 +13,9 @@ const PaymentForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const isConfirmed = window.confirm("Do you want to proceed with the payment?");
+    if (!isConfirmed) return;
+
     const { error, paymentMethod } = await createPaymentMethod();
     if (error) return console.log(error.message);
 

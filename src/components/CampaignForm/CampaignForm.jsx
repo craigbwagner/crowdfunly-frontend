@@ -17,11 +17,15 @@ const CampaignForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("formData", formData);
-    if (campaignId) {
-      props.handleUpdateCampaign(campaignId, formData);
-    } else {
-      props.handleAddCampaign(formData);
+    const confirmMessage = campaignId
+      ? "Are you sure you want to update this campaign?"
+      : "Are you sure you want to create this campaign?";
+    if (window.confirm(confirmMessage)) {
+      if (campaignId) {
+        props.handleUpdateCampaign(campaignId, formData);
+      } else {
+        props.handleAddCampaign(formData);
+      }
     }
   };
 
@@ -53,14 +57,7 @@ const CampaignForm = (props) => {
         <form onSubmit={handleSubmit}>
           <h2>{campaignId ? "Update" : "Create"} Campaign</h2>
           <label htmlFor="title-input">Title </label>
-          <input
-            required
-            type="text"
-            name="title"
-            id="title-input"
-            value={formData.title}
-            onChange={handleChange}
-          />
+          <input required type="text" name="title" id="title-input" value={formData.title} onChange={handleChange} />
 
           <label htmlFor="campaignType-input">Campaign Type </label>
           <select
@@ -113,7 +110,8 @@ const CampaignForm = (props) => {
             onChange={handleChange}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit">
+            {campaignId ? "Update" : "Create"} Campaign</button>
         </form>
       </main>
     </>
