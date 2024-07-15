@@ -73,10 +73,15 @@ const App = () => {
         ) : (
           <Route path="/" element={<Landing />} />
         )}
-        <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
+        <Route
+          path="/campaigns"
+          element={<CampaignsList campaigns={campaigns} />}
+        />
         <Route
           path="/campaigns/:campaignId"
-          element={<ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />}
+          element={
+            <ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />
+          }
         />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
