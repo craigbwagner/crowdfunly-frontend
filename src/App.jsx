@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Dashboard from "./components/Dashboard/Dashboard";
 import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
@@ -39,13 +38,22 @@ const App = () => {
 
   const handleDeleteCampaign = async (campaignId) => {
     const deleteCampaign = await campaignService.deleteCampaign(campaignId);
-    setCampaigns(campaigns.filter((campaign) => campaign._id !== deleteCampaign._id));
+    setCampaigns(
+      campaigns.filter((campaign) => campaign._id !== deleteCampaign._id),
+    );
     navigate("/campaigns");
   };
 
   const handleUpdateCampaign = async (campaignId, campaignFormData) => {
-    const updateCampaign = await campaignService.update(campaignId, campaignFormData);
-    setCampaigns(campaigns.map((campaign) => (campaignId === campaign._id ? updateCampaign : campaign)));
+    const updateCampaign = await campaignService.update(
+      campaignId,
+      campaignFormData,
+    );
+    setCampaigns(
+      campaigns.map((campaign) =>
+        campaignId === campaign._id ? updateCampaign : campaign,
+      ),
+    );
     navigate(`/campaigns/${campaignId}`);
   };
 
@@ -66,13 +74,23 @@ const App = () => {
             <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
             <Route
               path="/campaigns/:campaignId/edit"
-              element={<CampaignForm handleUpdateCampaign={handleUpdateCampaign} />}
+              element={
+                <CampaignForm handleUpdateCampaign={handleUpdateCampaign} />
+              }
+            />
+            <Route
+              path="/contributions/:campaignId"
+              element={<ContributionForm />}
             />
             <Route path="/profile/:userId/payment" element={<PaymentForm />} /> 
           </>
         ) : (
-          <Route path="/" element={<Landing />} />
+          <>
+            <Route path="/signup" element={<SignupForm setUser={setUser} />} />
+            <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+          </>
         )}
+        <Route path="/" element={<Landing />} />
         <Route
           path="/campaigns"
           element={<CampaignsList campaigns={campaigns} />}
@@ -83,8 +101,6 @@ const App = () => {
             <ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />
           }
         />
-        <Route path="/signup" element={<SignupForm setUser={setUser} />} />
-        <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>
     </Elements>
   );
