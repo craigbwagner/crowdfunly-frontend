@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Landing from "./components/Landing/Landing";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import * as authService from "../src/services/authService";
@@ -15,7 +14,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "./components/PaymentForm/PaymentForm";
 
-const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY,
+);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -69,9 +70,25 @@ const App = () => {
         {user ? (
           <>
             <Route path="/" element={<Dashboard user={user} />} />
-            <Route path="/profile/:userId" element={<Profile user={user} campaigns={campaigns} onEditCampaign={handleUpdateCampaign} onDeleteCampaign={handleDeleteCampaign} />} />
-            <Route path="/campaigns" element={<CampaignsList campaigns={campaigns} />} />
-            <Route path="/campaigns/new" element={<CampaignForm handleAddCampaign={handleAddCampaign} />} />
+            <Route
+              path="/profile/:userId"
+              element={
+                <Profile
+                  user={user}
+                  campaigns={campaigns}
+                  onEditCampaign={handleUpdateCampaign}
+                  onDeleteCampaign={handleDeleteCampaign}
+                />
+              }
+            />
+            <Route
+              path="/campaigns"
+              element={<CampaignsList campaigns={campaigns} />}
+            />
+            <Route
+              path="/campaigns/new"
+              element={<CampaignForm handleAddCampaign={handleAddCampaign} />}
+            />
             <Route
               path="/campaigns/:campaignId/edit"
               element={
@@ -82,7 +99,7 @@ const App = () => {
               path="/contributions/:campaignId"
               element={<ContributionForm />}
             />
-            <Route path="/profile/:userId/payment" element={<PaymentForm />} /> 
+            <Route path="/profile/:userId/payment" element={<PaymentForm />} />
           </>
         ) : (
           <>
