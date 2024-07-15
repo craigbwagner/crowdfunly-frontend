@@ -20,6 +20,9 @@ function ShowPage({user, handleDeleteCampaign}) {
 
   if (!campaign) return <main>Loading...</main>;
   console.log("userData", user);
+
+  const isCreatedByUser = campaign.createdBy && user && campaign.createdBy._id === user._id;
+  
   return (
     <>
       <h1>{campaign.title}</h1>

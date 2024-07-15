@@ -26,7 +26,7 @@ const App = () => {
   }, []);
 
   const handleAddCampaign = async (campaignFormData, campaignId) => {
-    const newCampaign = await campaignService.create(campaignFormData);
+    const newCampaign = await campaignService.create(campaignFormData, campaignId);
     setCampaigns([newCampaign, ...campaigns]);
     navigate(`/campaigns/${campaignId}`);
   };
