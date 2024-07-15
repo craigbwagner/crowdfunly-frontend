@@ -40,7 +40,7 @@ const App = () => {
   const handleDeleteCampaign = async (campaignId) => {
     const deleteCampaign = await campaignService.deleteCampaign(campaignId);
     setCampaigns(
-      campaigns.filter((campaign) => campaign._id !== deleteCampaign._id)
+      campaigns.filter((campaign) => campaign._id !== deleteCampaign._id),
     );
     navigate("/campaigns");
   };
@@ -48,12 +48,12 @@ const App = () => {
   const handleUpdateCampaign = async (campaignId, campaignFormData) => {
     const updateCampaign = await campaignService.update(
       campaignId,
-      campaignFormData
+      campaignFormData,
     );
     setCampaigns(
       campaigns.map((campaign) =>
-        campaignId === campaign._id ? updateCampaign : campaign
-      )
+        campaignId === campaign._id ? updateCampaign : campaign,
+      ),
     );
     navigate(`/campaigns/${campaignId}`);
   };
@@ -97,9 +97,8 @@ const App = () => {
             />
             <Route
               path="/contributions/:campaignId"
-              element={<ContributionForm />}
+              element={<PaymentForm />}
             />
-            <Route path="/profile/:userId/payment" element={<PaymentForm />} />
           </>
         ) : (
           <>
