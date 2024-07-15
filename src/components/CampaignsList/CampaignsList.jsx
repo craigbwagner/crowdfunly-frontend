@@ -78,10 +78,7 @@ function CampaignsList({ campaigns }) {
         <option value="Environment">Environment</option>
       </select>
 
-      <div
-        className="ag-theme-quartz" // applying the Data Grid theme
-        style={{ height: 500 }} // the Data Grid will fill the size of the parent container
-      >
+      <div className="ag-theme-quartz" style={{ height: 500 }}>
         <AgGridReact
           rowData={rowData}
           columnDefs={colDefs}
@@ -90,40 +87,6 @@ function CampaignsList({ campaigns }) {
           paginationPageSizeSelector={[20, 10, 5]}
         />
       </div>
-
-      {/* <table id="campaignsTable" className="display">
-        <thead>
-          <tr>
-            <th>Campaign Title</th>
-            <th>Goal</th>
-            <th>Raised</th>
-            <th>End Date</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {campaigns.map((campaign) => (
-            <tr key={campaign._id}>
-              <td>{campaign.title}</td>
-              <td>{campaign.goalAmount}</td>
-              <td>{campaign.amountRaised}</td>
-              <td>
-                End Date:{" "}
-                {new Date(campaign.endDate).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  timeZone: "UTC",
-                })}
-              </td>
-              <td>{campaign.campaignType}</td>
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr></tr>
-        </tfoot>
-      </table> */}
 
       <ul>
         {campaigns.length === 0 ? (
