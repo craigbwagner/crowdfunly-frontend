@@ -1,26 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ContributionForm() {
   const [amount, setAmount] = useState("");
-  const [campaignId, setCampaignId] = useState("");
+  const { campaignId } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Amount:</label>
-          <input type="number" value={amount} onChange={(evt) => setAmount(evt.target.value)} required />
-        </div>
-        <div>
-          <label>Campaign ID:</label>
-          <input type="text" value={campaignId} onChange={(evt) => setCampaignId(evt.target.value)} required />
-        </div>
-        <button type="submit">Contribute</button>
-      </form>
-    );
+    navigate(`/campaigns/${campaignId}`);
   };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Amount:</label>
+        <input
+          type="number"
+          value={amount}
+          onChange={(evt) => setAmount(evt.target.value)}
+          required
+        />
+      </div>
+      <button type="submit">Contribute</button>
+    </form>
+  );
 }
 
 export default ContributionForm;
