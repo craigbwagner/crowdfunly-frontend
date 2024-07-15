@@ -25,10 +25,10 @@ const App = () => {
     fetchAllCampaigns();
   }, []);
 
-  const handleAddCampaign = async (campaignFormData) => {
+  const handleAddCampaign = async (campaignFormData, campaignId) => {
     const newCampaign = await campaignService.create(campaignFormData);
     setCampaigns([newCampaign, ...campaigns]);
-    navigate("/campaigns");
+    navigate(`/campaigns/${campaignId}`);
   };
 
   const handleDeleteCampaign = async (campaignId) => {
