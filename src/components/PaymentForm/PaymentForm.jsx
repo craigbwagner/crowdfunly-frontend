@@ -66,7 +66,7 @@ const PaymentForm = () => {
           </button>
         </form>
       ) : (
-        <div>
+        <div className="payment-success">
           <h2>Payment Successful!</h2>
         </div>
       )}
