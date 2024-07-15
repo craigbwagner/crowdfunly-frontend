@@ -21,8 +21,7 @@ function ShowPage({user, handleDeleteCampaign}) {
   if (!campaign) return <main>Loading...</main>;
   console.log("userData", user);
 
-  const isCreatedByUser = campaign.createdBy && user && campaign.createdBy._id === user._id;
-  
+
   return (
     <>
       <h1>{campaign.title}</h1>
@@ -49,7 +48,6 @@ function ShowPage({user, handleDeleteCampaign}) {
         })}
       </h3>
 
-      {/* need to create condition to render if youre the creator */}
       {user ? (campaign.createdBy._id === user._id && (
         <>
           <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
