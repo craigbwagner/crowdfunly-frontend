@@ -1,68 +1,70 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { AgGridReact } from "ag-grid-react";
+import "@ag-grid-community/styles/ag-grid.css";
+import "@ag-grid-community/styles/ag-theme-quartz.css";
 
-function CampaignsList(props) {
-  const [selectedType, setSelectedType] = useState("");
+function CampaignsList({ campaigns }) {
+  const [rowData, setRowData] = useState([]);
+  const columns = [
+    {
+      headerName: "Title",
+      field: "title",
+      filter: true,
+      filterParams: {
+        closeOnApply: true,
+        filterOptions: ["contains"],
+      },
+    },
+    { headerName: "Goal", field: "goalAmount" },
+    { headerName: "Amount Raised", field: "amountRaised" },
+    {
+      headerName: "End Date",
+      field: "endDate",
+      valueFormatter: (params) =>
+        new Date(params.value).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "UTC",
+        }),
+    },
+    {
+      headerName: "Type",
+      field: "campaignType",
+      filter: true,
+      filterParams: {
+        closeOnApply: true,
+        filterOptions: ["contains"],
+      },
+    },
+  ];
 
-  const handleTypeChange = (event) => {
-    setSelectedType(event.target.value);
-  };
-
-  const filteredCampaigns = selectedType
-    ? props.campaigns.filter(
-        (campaign) => campaign.campaignType === selectedType
-      )
-    : props.campaigns;
+  useEffect(() => {
+    const setRows = async () => {
+      const campaignsArr = await campaigns.map((campaign) => ({
+        title: campaign.title,
+        goalAmount: campaign.goalAmount,
+        amountRaised: campaign.amountRaised,
+        endDate: campaign.endDate,
+        campaignType: campaign.campaignType,
+      }));
+      setRowData(campaignsArr);
+    };
+    setRows();
+  }, [campaigns]);
 
   return (
     <div className="campaigns-container">
       <h1>Available Campaigns</h1>
-      <label htmlFor="campaignFilterType">Filter By Campaign Type: </label>
-      <select
-        name="campaignType"
-        id="campaignFilterType"
-        value={selectedType}
-        onChange={handleTypeChange}
-      >
-        <option value="">All</option>
-        <option value="Charity">Charity</option>
-        <option value="Education">Education</option>
-        <option value="Creative">Creative</option>
-        <option value="Sports">Sports</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Business">Business</option>
-        <option value="Events">Events</option>
-        <option value="Environment">Environment</option>
-      </select>
-
-      <ul>
-        {props.campaigns.length === 0 ? (
-          <p>No campaigns found.</p>
-        ) : filteredCampaigns.length > 0 ? (
-          filteredCampaigns.map((campaign) => (
-            <li key={campaign._id}>
-              <h2>
-                <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
-              </h2>
-              <p>{campaign.description}</p>
-              <p>Goal: ${campaign.goalAmount}</p>
-              <p>Raised: ${campaign.amountRaised}</p>
-              <p>
-                End Date:{" "}
-                {new Date(campaign.endDate).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  timeZone: "UTC",
-                })}
-              </p>
-              <p>Type: {campaign.campaignType}</p>
-            </li>
-          ))
-        ) : (
-          <p>No {selectedType} campaigns found.</p>
-        )}
-      </ul>
+      <div className="ag-theme-quartz" style={{ height: 500 }}>
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={columns}
+          pagination={true}
+          paginationPageSize={5}
+          paginationPageSizeSelector={[20, 10, 5]}
+        />
+      </div>
     </div>
   );
 }
