@@ -48,9 +48,6 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
       {userContributions.length > 0 ? (
         <ul>
           {userContributions.map((contribution) => {
-            const campaign = campaigns.find(
-              (campaign) => campaign._id === contribution.campaignId,
-            );
             return (
               <ContributionsList
                 user={user}
