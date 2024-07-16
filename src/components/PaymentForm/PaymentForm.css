@@ -1,77 +1,88 @@
 .payment-form {
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-  }
-  
-  .payment-form form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .payment-form fieldset {
-    border: none;
-    margin-bottom: 20px;
-  }
-  
-  .payment-form .form-group {
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .payment-form .form-group label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 0 5px;
-    background: #f9f9f9;
-    color: #6b7c93;
-    transition: 0.2s;
-    pointer-events: none;
-  }
-  
-  .payment-form .form-group input:focus ~ label,
-  .payment-form .form-group input:not(:placeholder-shown) ~ label {
-    top: -10px;
-    left: 10px;
-    font-size: 12px;
-    color: #064779;
-  }
-  
-  .payment-form input[type="text"],
-  .payment-form input[type="number"],
-  .payment-form .StripeElement {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
 
-  .payment-form .StripeElement {
-    margin-top: 20px;
-  }
-  
-  .payment-form button {
-    padding: 10px 15px;
-    background-color: #064779;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .payment-form button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .payment-success {
-    text-align: center;
-    font-size: 18px;
-  
-  }
+.payment-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-form fieldset {
+  border: none;
+  margin-bottom: 20px;
+}
+
+.payment-form .form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.payment-form .form-group label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0 5px;
+  background: #f9f9f9;
+  color: #6b7c93;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.payment-form .form-group input:focus ~ label,
+.payment-form .form-group input:not(:placeholder-shown) ~ label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #064779;
+}
+
+.payment-form input[type="text"],
+.payment-form input[type="number"],
+.payment-form .StripeElement {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.payment-form input:hover,
+.payment-form .StripeElement:hover {
+  border-color: #2870a7;
+  transition: ease-in-out 50ms;
+}
+
+.payment-form .StripeElement {
+  margin-top: 20px;
+}
+
+.payment-form button {
+  padding: 10px 15px;
+  background-color: #064779;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.payment-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-form button:hover {
+  background-color: #2870a7;
+  color: white;
+  transition: ease-in-out 50ms;
+}
+
+.payment-success {
+  text-align: center;
+  font-size: 18px;
+}

@@ -68,10 +68,14 @@
   font-weight: 300;
 }
 
-.campaignForms-inputs:hover,
+.campaignForms-inputs:hover {
+  background-color: #2870a7;
+  transition: ease-in-out 50ms;
+}
+
 .campaignForms-buttons:hover {
-  background-color: white;
-  color: #007bff;
+  background-color: #2870a7;
+  color: white;
   transition: ease-in-out 50ms;
 }
 
