@@ -12,7 +12,7 @@ form {
   justify-content: center;
 }
 
-fieldset {
+.signForms-fieldset {
   background: rgb(237, 237, 237, 0.7);
   padding: 30px;
   border-radius: 20px;
