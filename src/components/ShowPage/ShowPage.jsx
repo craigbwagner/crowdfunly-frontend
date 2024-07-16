@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import * as campaignService from "../../services/campaignService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./ShowPage.css";
 
 
 function ShowPage({ user, handleDeleteCampaign }) {
