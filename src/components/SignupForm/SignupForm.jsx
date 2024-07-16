@@ -39,55 +39,33 @@ const SignupForm = (props) => {
 
   return (
     <main>
-      <h1>Sign Up</h1>
-      <p>{message}</p>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="name"
-            value={username}
-            name="username"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email Address:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm"
-            value={passwordConf}
-            name="passwordConf"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
-        </div>
+        <fieldset aria-labelledby="signForm-legend">
+          <legend className="signForm-legend">Sign Up</legend>
+
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input type="text" id="name" value={username} name="username" onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="email">Email Address:</label>
+            <input type="email" id="email" value={email} name="email" onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input type="password" id="password" value={password} name="password" onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="confirm">Confirm Password:</label>
+            <input type="password" id="confirm" value={passwordConf} name="passwordConf" onChange={handleChange} />
+          </div>
+          <div>
+            <button disabled={isFormInvalid()}>Sign Up</button>
+            <Link to="/">
+              <button>Cancel</button>
+            </Link>
+          </div>
+        </fieldset>
       </form>
     </main>
   );

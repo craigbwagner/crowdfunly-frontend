@@ -33,12 +33,10 @@ const SigninForm = (props) => {
 
   return (
     <main>
-      <h1>Log In</h1>
-      <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <fieldset aria-labelledby="signForm-legend">
           <legend className="signForm-legend">Sign In</legend>
-          
+
           <div>
             <label htmlFor="email">Username:</label>
             <input
