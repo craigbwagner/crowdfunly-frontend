@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 
 const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
   const navigate = useNavigate();
-  const userContributions = contributions.filter((contribution) => contribution.contributedBy._id === user._id);
-  const userCampaigns = campaigns.filter((campaign) => campaign.createdBy._id === user._id);
-
+  const userContributions = contributions.filter(
+    (contribution) => contribution.contributedBy._id === user._id,
+  );
+  const userCampaigns = campaigns.filter(
+    (campaign) => campaign.createdBy._id === user._id,
+  );
 
   const handleEdit = (campaignId) => {
     navigate(`/campaigns/${campaignId}/edit`);
@@ -45,24 +48,15 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
       {userContributions.length > 0 ? (
         <ul>
           {userContributions.map((contribution) => {
-            const campaign = campaigns.find((campaign) => campaign._id === contribution.campaignId);
+            const campaign = campaigns.find(
+              (campaign) => campaign._id === contribution.campaignId,
+            );
             return (
-              <li key={contribution._id}>
-                <h2>
-                  <Link to={`/campaigns/${contribution.campaignId}`}>{campaign?.title}</Link>
-                </h2>
-                <p>Campaign: </p>
-                <p>Amount: ${contribution.amount}</p>
-                <p>
-                  Date:{" "}
-                  {new Date(contribution.createdAt).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                    timeZone: "UTC",
-                  })}
-                </p>
-              </li>
+              <ContributionsList
+                user={user}
+                contributions={contributions}
+                campaigns={campaigns}
+              ></ContributionsList>
             );
           })}
         </ul>
