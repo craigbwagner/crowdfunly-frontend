@@ -47,7 +47,7 @@ const SignupForm = (props) => {
           <div className="signFormsInputDiv">
             <label htmlFor="username">Username:</label>
             <input
-              className="signForms-input"
+              className="signForms-inputs"
               type="text"
               id="name"
               value={username}
@@ -58,7 +58,7 @@ const SignupForm = (props) => {
           <div className="signFormsInputDiv">
             <label htmlFor="email">Email Address:</label>
             <input
-              className="signForms-input"
+              className="signForms-inputs"
               type="email"
               id="email"
               value={email}
@@ -69,7 +69,7 @@ const SignupForm = (props) => {
           <div className="signFormsInputDiv">
             <label htmlFor="password">Password:</label>
             <input
-              className="signForms-input"
+              className="signForms-inputs"
               type="password"
               id="password"
               value={password}
@@ -80,7 +80,7 @@ const SignupForm = (props) => {
           <div className="signFormsInputDiv">
             <label htmlFor="confirm">Confirm Password:</label>
             <input
-              className="signForms-input"
+              className="signForms-inputs"
               type="password"
               id="confirm"
               value={passwordConf}
