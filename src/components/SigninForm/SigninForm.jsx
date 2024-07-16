@@ -40,7 +40,7 @@ const SigninForm = (props) => {
 
   return (
     <main>
-      <form autoComplete="off" onSubmit={handleSubmit}>
+      <form className="signForms" autoComplete="off" onSubmit={handleSubmit}>
         <fieldset className="signForms-fieldset" aria-labelledby="signForms-fieldset">
           <legend className="signForms-legend">Sign In</legend>
 

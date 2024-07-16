@@ -40,7 +40,7 @@ const SignupForm = (props) => {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form className="signForms" onSubmit={handleSubmit}>
         <fieldset className="signForms-fieldset" aria-labelledby="signForms-legend">
           <legend className="signForms-legend">Sign Up</legend>
 
