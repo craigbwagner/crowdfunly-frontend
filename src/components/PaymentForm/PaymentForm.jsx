@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./PaymentForm.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const PaymentForm = ({ user }) => {
   const stripe = useStripe();
@@ -10,10 +10,11 @@ const PaymentForm = ({ user }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const { campaignId } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    addContribution();
+   
 
     const isConfirmed = window.confirm("Do you want to proceed with the payment?");
     if (!isConfirmed) return;
@@ -29,7 +30,11 @@ const PaymentForm = ({ user }) => {
     if (confirmPayment.error) {
       console.log(confirmPayment.error.message);
     } else {
+      await addContribution();
       setSuccess(true);
+      setTimeout(() => {
+        navigate(`/campaigns/${campaignId}`);
+      }, 2000);
     }
   };
 

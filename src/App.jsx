@@ -97,7 +97,7 @@ const App = () => {
             />
             <Route
               path="/contributions/:campaignId"
-              element={<PaymentForm user={user}/>}
+              element={<PaymentForm user={user} />}
             />
           </>
         ) : (

@@ -3,6 +3,7 @@ import * as campaignService from "../../services/campaignService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 function ShowPage({ user, handleDeleteCampaign }) {
   const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
