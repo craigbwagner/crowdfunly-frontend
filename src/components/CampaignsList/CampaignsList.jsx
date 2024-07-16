@@ -7,42 +7,48 @@ import "@ag-grid-community/styles/ag-theme-quartz.css";
 function CampaignsList({ campaigns }) {
   const [selectedType, setSelectedType] = useState("");
   const [rowData, setRowData] = useState([]);
-  const [colDefs, setColDefs] = useState([
+  const columns = [
     {
-      field: "Title",
+      headerName: "Title",
+      field: "title",
       filter: true,
       filterParams: {
         closeOnApply: true,
         filterOptions: ["contains"],
       },
     },
-    { field: "Goal" },
-    { field: "Amount Raised" },
-    { field: "End Date" },
+    { headerName: "Goal", field: "goalAmount" },
+    { headerName: "Amount Raised", field: "amountRaised" },
     {
-      field: "Type",
-      filter: true,
-      filterParams: {
-        closeOnApply: true,
-        filterOptions: ["contains"],
-      },
-    },
-  ]);
-
-  useEffect(() => {
-    const setRows = async () => {
-      console.log(campaigns);
-      const campaignsArr = await campaigns.map((campaign) => ({
-        Title: campaign.title,
-        Goal: campaign.goalAmount,
-        amountRaised: campaign.amountRaised,
-        endDate: new Date(campaign.endDate).toLocaleDateString("en-US", {
+      headerName: "End Date",
+      field: "endDate",
+      valueFormatter: (params) =>
+        new Date(params.value).toLocaleDateString("en-US", {
           month: "short",
           day: "numeric",
           year: "numeric",
           timeZone: "UTC",
         }),
-        Type: campaign.campaignType,
+    },
+    {
+      headerName: "Type",
+      field: "campaignType",
+      filter: true,
+      filterParams: {
+        closeOnApply: true,
+        filterOptions: ["contains"],
+      },
+    },
+  ];
+
+  useEffect(() => {
+    const setRows = async () => {
+      const campaignsArr = await campaigns.map((campaign) => ({
+        title: campaign.title,
+        goalAmount: campaign.goalAmount,
+        amountRaised: campaign.amountRaised,
+        endDate: campaign.endDate,
+        campaignType: campaign.campaignType,
       }));
       setRowData(campaignsArr);
     };
@@ -81,7 +87,7 @@ function CampaignsList({ campaigns }) {
       <div className="ag-theme-quartz" style={{ height: 500 }}>
         <AgGridReact
           rowData={rowData}
-          columnDefs={colDefs}
+          columnDefs={columns}
           pagination={true}
           paginationPageSize={5}
           paginationPageSizeSelector={[20, 10, 5]}
