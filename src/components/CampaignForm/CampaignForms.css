@@ -1,0 +1,86 @@
+.campaignForms {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.campaignForms form {
+  display: flex;
+  flex-direction: column;
+}
+
+.campaignForms-fieldset {
+  border: none;
+  margin-bottom: 20px;
+  background: rgb(237, 237, 237, 0.7);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.campaignForms-legend {
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.campaignFormsInputDiv,
+.campaignFormsButtonDiv {
+  position: relative;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.campaignFormsInputDiv label,
+.campaignFormsButtonDiv label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0 5px;
+  background: #f9f9f9;
+  color: #6b7c93;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.campaignForms-inputs:focus ~ label,
+.campaignForms-inputs:not(:placeholder-shown) ~ label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: #007bff;
+}
+
+.campaignForms-inputs,
+.campaignForms-buttons {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: rgb(237, 237, 237, 0.7);
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.campaignForms-inputs:hover,
+.campaignForms-buttons:hover {
+  background-color: white;
+  color: #007bff;
+  transition: ease-in-out 50ms;
+}
+
+.campaignForms button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
