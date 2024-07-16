@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 
 function CampaignsList({ campaigns }) {
-  const [selectedType, setSelectedType] = useState("");
   const [rowData, setRowData] = useState([]);
   const columns = [
     {
