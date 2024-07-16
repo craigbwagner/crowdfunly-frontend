@@ -38,7 +38,7 @@ const SigninForm = (props) => {
         <fieldset aria-labelledby="signForms-legend">
           <legend className="signForms-legend">Sign In</legend>
 
-          <div>
+          <div className="signForms-inputs">
             <label htmlFor="email">Username:</label>
             <input
               type="text"
@@ -49,7 +49,7 @@ const SigninForm = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="signForms-inputs">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -60,7 +60,7 @@ const SigninForm = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="signForms-buttons">
             <button>Sign In</button>
           </div>
         </fieldset>

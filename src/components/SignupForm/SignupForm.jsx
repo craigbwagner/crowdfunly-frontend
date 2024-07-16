@@ -44,23 +44,23 @@ const SignupForm = (props) => {
         <fieldset aria-labelledby="signForms-legend">
           <legend className="signForms-legend">Sign Up</legend>
 
-          <div>
+          <div className="signForms-inputs">
             <label htmlFor="username">Username:</label>
             <input type="text" id="name" value={username} name="username" onChange={handleChange} />
           </div>
-          <div>
+          <div className="signForms-inputs">
             <label htmlFor="email">Email Address:</label>
             <input type="email" id="email" value={email} name="email" onChange={handleChange} />
           </div>
-          <div>
+          <div className="signForms-inputs">
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" value={password} name="password" onChange={handleChange} />
           </div>
-          <div>
+          <div className="signForms-inputs">
             <label htmlFor="confirm">Confirm Password:</label>
             <input type="password" id="confirm" value={passwordConf} name="passwordConf" onChange={handleChange} />
           </div>
-          <div>
+          <div className="signForms-buttons">
             <button disabled={isFormInvalid()}>Sign Up</button>
           </div>
         </fieldset>

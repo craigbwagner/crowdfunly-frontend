@@ -1,6 +1,7 @@
 .signForms-legend {
   font-weight: bold;
   font-size: 36px;
+  text-align: center;
 }
 
 form {
@@ -15,7 +16,8 @@ fieldset {
   background: rgb(237, 237, 237, 0.9);
 }
 
-div {
+.signForms-inputs,
+.signForms-buttons {
   display: flex;
   flex-direction: column;
   margin: 10px;
