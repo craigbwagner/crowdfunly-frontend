@@ -15,7 +15,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "./components/PaymentForm/PaymentForm";
 
-
 const stripePromise = loadStripe(
   import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY,
 );
@@ -90,8 +89,6 @@ const App = () => {
                   onEditCampaign={handleUpdateCampaign}
                   onDeleteCampaign={handleDeleteCampaign}
                   contributions={contributions}
-                  
-              
                 />
               }
             />
@@ -111,7 +108,7 @@ const App = () => {
             />
             <Route
               path="/contributions/:campaignId"
-              element={<PaymentForm user={user}/>}
+              element={<PaymentForm user={user} />}
             />
           </>
         ) : (
@@ -128,7 +125,11 @@ const App = () => {
         <Route
           path="/campaigns/:campaignId"
           element={
-            <ShowPage user={user} handleDeleteCampaign={handleDeleteCampaign} />
+            <ShowPage
+              user={user}
+              handleDeleteCampaign={handleDeleteCampaign}
+              contributions={contributions}
+            />
           }
         />
       </Routes>
