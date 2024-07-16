@@ -54,65 +54,66 @@ const CampaignForm = (props) => {
   return (
     <>
       <main>
-        <h1>New Campaign Form</h1>
-        <form onSubmit={handleSubmit}>
-          <h2>{campaignId ? "Update" : "Create"} Campaign</h2>
-          <label htmlFor="title-input">Title </label>
-          <input required type="text" name="title" id="title-input" value={formData.title} onChange={handleChange} />
+        <form className="campaignForms" onSubmit={handleSubmit}>
+          <fieldset className="campaignForms-fieldset" aria-labelledby="campaignForms-legend">
+            <legend className="campaignForms-legend">{campaignId ? "Update" : "Create"} Campaign</legend>
 
-          <label htmlFor="campaignType-input">Campaign Type </label>
-          <select
-            required
-            name="campaignType"
-            id="campaignType-input"
-            value={formData.campaignType}
-            onChange={handleChange}
-          >
-            <option value="" disabled>
-              Select
-            </option>
-            <option value="Charity">Charity</option>
-            <option value="Education">Education</option>
-            <option value="Creative">Creative</option>
-            <option value="Sports">Sports</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Business">Business</option>
-            <option value="Events">Events</option>
-            <option value="Environment">Environment</option>
-          </select>
+            <label htmlFor="title-input">Title </label>
+            <input required type="text" name="title" id="title-input" value={formData.title} onChange={handleChange} />
 
-          <label htmlFor="description-input">Description </label>
-          <textarea
-            required
-            type="text"
-            name="description"
-            id="description-input"
-            value={formData.description}
-            onChange={handleChange}
-          />
+            <label htmlFor="campaignType-input">Campaign Type </label>
+            <select
+              required
+              name="campaignType"
+              id="campaignType-input"
+              value={formData.campaignType}
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Select
+              </option>
+              <option value="Charity">Charity</option>
+              <option value="Education">Education</option>
+              <option value="Creative">Creative</option>
+              <option value="Sports">Sports</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Business">Business</option>
+              <option value="Events">Events</option>
+              <option value="Environment">Environment</option>
+            </select>
 
-          <label htmlFor="goalAmount-input">Goal Amount </label>
-          <input
-            required
-            type="number"
-            name="goalAmount"
-            id="goalAmount-input"
-            value={formData.goalAmount}
-            onChange={handleChange}
-          />
+            <label htmlFor="description-input">Description </label>
+            <textarea
+              required
+              type="text"
+              name="description"
+              id="description-input"
+              value={formData.description}
+              onChange={handleChange}
+            />
 
-          <label htmlFor="endDate-input">End Date </label>
-          <input
-            required
-            type="date"
-            name="endDate"
-            id="endDate-input"
-            value={formData.endDate}
-            onChange={handleChange}
-          />
+            <label htmlFor="goalAmount-input">Goal Amount </label>
+            <input
+              required
+              type="number"
+              name="goalAmount"
+              id="goalAmount-input"
+              value={formData.goalAmount}
+              onChange={handleChange}
+            />
 
-          <button type="submit">
-            {campaignId ? "Update" : "Create"} Campaign</button>
+            <label htmlFor="endDate-input">End Date </label>
+            <input
+              required
+              type="date"
+              name="endDate"
+              id="endDate-input"
+              value={formData.endDate}
+              onChange={handleChange}
+            />
+
+            <button type="submit">{campaignId ? "Update" : "Create"} Campaign</button>
+          </fieldset>
         </form>
       </main>
     </>
