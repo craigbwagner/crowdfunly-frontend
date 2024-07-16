@@ -26,6 +26,7 @@
   font-size: 36px;
   text-align: center;
   margin-bottom: 20px;
+  color: #064779;
 }
 
 .signFormsInputDiv,
@@ -43,7 +44,7 @@
   left: 10px;
   padding: 0 5px;
   background: #f9f9f9;
-  color: #6b7c93;
+  color: #064779;
   transition: 0.2s;
   pointer-events: none;
 }
