@@ -27,48 +27,60 @@ function ShowPage({ user, handleDeleteCampaign }) {
     <>
       <div className="showPage">
         <h1>{campaign.title}</h1>
-        <h3>{campaign.campaignType}</h3>
-        <h3>Goal: ${campaign.goalAmount}</h3>
-        <h3>Amount Raised: ${campaign.amountRaised}</h3>
-        <h3>Created by: {campaign.createdBy.username}</h3>
+        <p>({campaign.campaignType})</p>
+        <h3>
+          Goal: <span>${campaign.goalAmount}</span>
+        </h3>
+        <h3>
+          Amount Raised: <span>${campaign.amountRaised}</span>
+        </h3>
+        <h3>
+          Created by: <span>{campaign.createdBy.username}</span>
+        </h3>
         <h3>
           Created:{" "}
-          {new Date(campaign.createdAt).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-            timeZone: "UTC",
-          })}
+          <span>
+            {new Date(campaign.createdAt).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              timeZone: "UTC",
+            })}
+          </span>
         </h3>
         <h3>
           End Date:{" "}
-          {new Date(campaign.endDate).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-            timeZone: "UTC",
-          })}
+          <span>
+            {new Date(campaign.endDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              timeZone: "UTC",
+            })}
+          </span>
         </h3>
-        {user
-          ? campaign.createdBy._id === user._id && (
-              <>
-                <button>
-                  <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
-                </button>
-                <button onClick={confirmDelete} type="button">
-                  Delete
-                </button>
-              </>
-            )
-          : null}
-        {user ? (
-          <button>
-            <Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link>
-          </button>
-        ) : (
-          <h3>Create an account to contribute</h3>
-        )}
         <p>{campaign.description}</p>
+        <div className="showPage-buttons">
+          {user
+            ? campaign.createdBy._id === user._id && (
+                <>
+                  <button>
+                    <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
+                  </button>
+                  <button onClick={confirmDelete} type="button">
+                    Delete
+                  </button>
+                </>
+              )
+            : null}
+          {user ? (
+            <button>
+              <Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link>
+            </button>
+          ) : (
+            <h3>Create an account to contribute</h3>
+          )}
+        </div>
         <h2>Contributions</h2>
       </div>
     </>
