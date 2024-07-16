@@ -1,7 +1,9 @@
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #32322C;
-  padding: 1rem;
-}
+  padding: 1rem;}
 
 nav ul {
   list-style: none;
@@ -21,3 +23,7 @@ nav ul li a {
 nav ul li a:hover {
   color: #39A0ED
 }
+
+h1 {
+  color: #2870a7
+} 

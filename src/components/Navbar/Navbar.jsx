@@ -3,7 +3,9 @@ import "./Navbar.css";
 
 const NavBar = ({ user, handleSignout }) => {
   return (
+    <>
     <nav>
+    <h1>Crowdfunly</h1>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -34,6 +36,7 @@ const NavBar = ({ user, handleSignout }) => {
         )}
       </ul>
     </nav>
+        </>
   );
 };
 
