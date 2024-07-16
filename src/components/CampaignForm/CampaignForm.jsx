@@ -68,6 +68,7 @@ const CampaignForm = (props) => {
                 id="title-input"
                 value={formData.title}
                 onChange={handleChange}
+                placeholder=" "
               />
             </div>
 
