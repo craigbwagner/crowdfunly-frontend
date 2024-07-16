@@ -18,9 +18,19 @@ form {
   border-radius: 20px;
 }
 
-.signForms-inputs,
-.signForms-buttons {
+.signFormsInputDiv,
+.signFormsButtonDiv {
   display: flex;
   flex-direction: column;
   margin: 10px;
+}
+
+.signForms-input,
+.signForms-buttons {
+  background: rgb(237, 237, 237, 0.7);
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
 }

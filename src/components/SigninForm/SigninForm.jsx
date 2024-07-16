@@ -38,9 +38,10 @@ const SigninForm = (props) => {
         <fieldset className="signForms-fieldset" aria-labelledby="signForms-fieldset">
           <legend className="signForms-legend">Sign In</legend>
 
-          <div className="signForms-inputs">
+          <div className="signFormsInputDiv">
             <label htmlFor="email">Username:</label>
             <input
+              className="signForms-input"
               type="text"
               autoComplete="off"
               id="username"
@@ -49,9 +50,10 @@ const SigninForm = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="signForms-inputs">
+          <div className="signFormsInputDiv">
             <label htmlFor="password">Password:</label>
             <input
+              className="signForms-input"
               type="password"
               autoComplete="off"
               id="password"
@@ -60,8 +62,8 @@ const SigninForm = (props) => {
               onChange={handleChange}
             />
           </div>
-          <div className="signForms-buttons">
-            <button>Sign In</button>
+          <div className="signFormsButtonDiv">
+            <button className="signForms-buttons">Sign In</button>
           </div>
         </fieldset>
       </form>
