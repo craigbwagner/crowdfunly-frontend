@@ -34,3 +34,9 @@ form {
   font-size: 14px;
   font-weight: 300;
 }
+
+.signForms-input:hover,
+.signForms-buttons:hover {
+  background-color: white;
+  transition: ease-in-out 50ms;
+}
