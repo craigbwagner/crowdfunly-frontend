@@ -14,7 +14,6 @@ const PaymentForm = ({ user }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-   
 
     const isConfirmed = window.confirm("Do you want to proceed with the payment?");
     if (!isConfirmed) return;
@@ -73,36 +72,42 @@ const PaymentForm = ({ user }) => {
 
   return (
     <div className="payment-form">
-      {!success ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <div className="form-group">
-              <input type="text" value={name} onChange={(evt) => setName(evt.target.value)} required placeholder=" " />
-              <label>Name</label>
-            </div>
-            <div className="form-group">
-              <input
-                type="number"
-                value={amount}
-                onChange={(evt) => setAmount(evt.target.value)}
-                required
-                placeholder=" "
-              />
-              <label>Amount (USD)</label>
-              <CardElement className="StripeElement" />
-            </div>
-          </fieldset>
+    {!success ? (
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <legend className="payment-form-legend">Add Contribution</legend>
+          <div className="form-group">
+            <input
+              type="text"
+              value={name}
+              onChange={(evt) => setName(evt.target.value)}
+              required
+              placeholder=" "
+            />
+            <label>Name</label>
+          </div>
+          <div className="form-group">
+            <input
+              type="number"
+              value={amount}
+              onChange={(evt) => setAmount(evt.target.value)}
+              required
+              placeholder=" "
+            />
+            <label>Amount (USD)</label>
+            <CardElement className="StripeElement" />
+          </div>
           <button type="submit" disabled={!stripe}>
             Pay
           </button>
-        </form>
-      ) : (
-        <div className="payment-success">
-          <h3>Payment Successful. Thank you for your contribution.</h3>
-        </div>
-      )}
-    </div>
-  );
+        </fieldset>
+      </form>
+    ) : (
+      <div className="payment-success">
+        <h3>Payment Successful. Thank you for your contribution.</h3>
+      </div>
+    )}
+  </div>
+);
 };
-
 export default PaymentForm;

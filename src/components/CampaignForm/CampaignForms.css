@@ -23,9 +23,10 @@
 
 .campaignForms-legend {
   font-weight: bold;
-  font-size: 36px;
+  font-size: 28px;
   text-align: center;
   margin-bottom: 20px;
+  color: #064779;
 }
 
 .campaignFormsInputDiv,
@@ -43,7 +44,7 @@
   left: 10px;
   padding: 0 5px;
   background: #f9f9f9;
-  color: #6b7c93;
+  color: #064779;
   transition: 0.2s;
   pointer-events: none;
 }
@@ -53,7 +54,7 @@
   top: -10px;
   left: 10px;
   font-size: 12px;
-  color: #007bff;
+  color: #064779;
 }
 
 .campaignForms-inputs,
@@ -68,16 +69,20 @@
   font-weight: 300;
 }
 
-.campaignForms-inputs:hover,
+.campaignForms-inputs:hover {
+  border-color: #2870a7;
+  transition: ease-in-out 50ms;
+}
+
 .campaignForms-buttons:hover {
-  background-color: white;
-  color: #007bff;
+  background-color: #2870a7;
+  color: white;
   transition: ease-in-out 50ms;
 }
 
 .campaignForms button {
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #064779;
   color: #fff;
   border: none;
   border-radius: 4px;
