@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import * as campaignService from "../../services/campaignService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ContributionsList from "../ContributionsList/ContributionsList";
 
-
-function ShowPage({ user, handleDeleteCampaign }) {
+function ShowPage({ user, handleDeleteCampaign, contributions }) {
   const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
 
@@ -51,7 +51,9 @@ function ShowPage({ user, handleDeleteCampaign }) {
       {user
         ? campaign.createdBy._id === user._id && (
             <>
-              <button><Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link></button>
+              <button>
+                <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
+              </button>
               <button onClick={confirmDelete} type="button">
                 Delete
               </button>
@@ -59,12 +61,17 @@ function ShowPage({ user, handleDeleteCampaign }) {
           )
         : null}
       {user ? (
-        <button><Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link></button>
+        <button>
+          <Link to={`/contributions/${campaign._id}`}>
+            Contribute to this Campaign
+          </Link>
+        </button>
       ) : (
         <h3>Create an account to contribute</h3>
       )}
       <p>{campaign.description}</p>
       <h2>Contributions</h2>
+      <ContributionsList contributions={contributions} />
     </>
   );
 }
