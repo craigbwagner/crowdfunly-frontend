@@ -9,10 +9,12 @@ import CampaignForm from "./components/CampaignForm/CampaignForm";
 import Profile from "./components/Profile/Profile";
 import ShowPage from "./components/ShowPage/ShowPage";
 import * as campaignService from "../src/services/campaignService";
+import * as contributionsService from "../src/services/contributionsService";
 import "./App.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "./components/PaymentForm/PaymentForm";
+
 
 const stripePromise = loadStripe(
   import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY,
@@ -22,6 +24,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser());
   const [campaigns, setCampaigns] = useState([]);
   const navigate = useNavigate();
+  const [contributions, setContributions] = useState([]);
 
   useEffect(() => {
     const fetchAllCampaigns = async () => {
@@ -29,6 +32,14 @@ const App = () => {
       setCampaigns(campaignsData);
     };
     fetchAllCampaigns();
+  }, []);
+
+  useEffect(() => {
+    const fetchAllContributions = async () => {
+      const contributionsData = await contributionsService.index();
+      setContributions(contributionsData);
+    };
+    fetchAllContributions();
   }, []);
 
   const handleAddCampaign = async (campaignFormData) => {
@@ -78,6 +89,9 @@ const App = () => {
                   campaigns={campaigns}
                   onEditCampaign={handleUpdateCampaign}
                   onDeleteCampaign={handleDeleteCampaign}
+                  contributions={contributions}
+                  
+              
                 />
               }
             />
@@ -97,7 +111,7 @@ const App = () => {
             />
             <Route
               path="/contributions/:campaignId"
-              element={<PaymentForm user={user} />}
+              element={<PaymentForm user={user}/>}
             />
           </>
         ) : (
