@@ -62,9 +62,6 @@ const SignupForm = (props) => {
           </div>
           <div>
             <button disabled={isFormInvalid()}>Sign Up</button>
-            <Link to="/">
-              <button>Cancel</button>
-            </Link>
           </div>
         </fieldset>
       </form>

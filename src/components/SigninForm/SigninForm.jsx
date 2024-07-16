@@ -61,10 +61,7 @@ const SigninForm = (props) => {
             />
           </div>
           <div>
-            <button>Log In</button>
-            <Link to="/">
-              <button>Cancel</button>
-            </Link>
+            <button>Sign In</button>
           </div>
         </fieldset>
       </form>
