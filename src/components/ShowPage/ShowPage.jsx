@@ -27,8 +27,8 @@ function ShowPage({ user, handleDeleteCampaign }) {
     <>
       <h1>{campaign.title}</h1>
       <h2>{campaign.campaignType}</h2>
-      <h3>Goal: {campaign.goalAmount}</h3>
-      <h3>Amount Raised: {campaign.amountRaised}</h3>
+      <h3>Goal: ${campaign.goalAmount}</h3>
+      <h3>Amount Raised: ${campaign.amountRaised}</h3>
       <h3>Created by: {campaign.createdBy.username}</h3>
       <h3>
         Created:{" "}
