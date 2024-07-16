@@ -47,15 +47,12 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
       <h2>Contributions</h2>
       {userContributions.length > 0 ? (
         <ul>
-          {userContributions.map((contribution) => {
-            return (
-              <ContributionsList
-                user={user}
-                contributions={contributions}
-                parentComponent={"profilePage"}
-              ></ContributionsList>
-            );
-          })}
+          <ContributionsList
+            user={user}
+            contributions={contributions}
+            userContributions={userContributions}
+            parentComponent={"profilePage"}
+          ></ContributionsList>
         </ul>
       ) : (
         <p>No contributions made yet.</p>
