@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ContributionsList = ({ contributions }) => {
+const ContributionsList = ({ contributions, parentComponent }) => {
   console.log(contributions);
   return (
     <ul>
@@ -9,12 +9,17 @@ const ContributionsList = ({ contributions }) => {
       ) : (
         contributions.map((contribution) => (
           <li key={contribution._id}>
-            <h3>
-              Campaign:&nbsp;
-              <Link to={`/campaigns/${contribution.campaignId._id}`}>
-                {contribution.campaignId.title}
-              </Link>
-            </h3>
+            {parentComponent === "profilePage" ? (
+              <h3>
+                Campaign:&nbsp;
+                <Link to={`/campaigns/${contribution.campaignId._id}`}>
+                  {contribution.campaignId.title}
+                </Link>
+              </h3>
+            ) : (
+              <h3>Contributor: {contribution.contributedBy.username}</h3>
+            )}
+
             <p>Amount: ${contribution.amount}</p>
             <p>
               Date:{" "}

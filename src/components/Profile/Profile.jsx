@@ -52,6 +52,7 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
               <ContributionsList
                 user={user}
                 contributions={contributions}
+                parentComponent={"profilePage"}
               ></ContributionsList>
             );
           })}
