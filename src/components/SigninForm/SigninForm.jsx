@@ -35,7 +35,7 @@ const SigninForm = (props) => {
   const { username, password } = formData;
 
   const isFormInvalid = () => {
-    return (username === "" || password === "");
+    return username === "" || password === "";
   };
 
   return (
@@ -47,7 +47,7 @@ const SigninForm = (props) => {
           <div className="signFormsInputDiv">
             <label htmlFor="email">Username:</label>
             <input
-              className="signForms-input"
+              className="signForms-inputs"
               type="text"
               autoComplete="off"
               id="username"
@@ -59,7 +59,7 @@ const SigninForm = (props) => {
           <div className="signFormsInputDiv">
             <label htmlFor="password">Password:</label>
             <input
-              className="signForms-input"
+              className="signForms-inputs"
               type="password"
               autoComplete="off"
               id="password"
@@ -69,7 +69,9 @@ const SigninForm = (props) => {
             />
           </div>
           <div className="signFormsButtonDiv">
-            <button className="signForms-buttons" disabled={isFormInvalid()}>Sign In</button>
+            <button className="signForms-buttons" disabled={isFormInvalid()}>
+              Sign In
+            </button>
           </div>
         </fieldset>
       </form>

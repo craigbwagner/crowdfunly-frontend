@@ -1,42 +1,88 @@
-.signForms-legend {
-  font-weight: bold;
-  font-size: 36px;
-  text-align: center;
-}
 
 .signForms {
-  padding: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.signForms-fieldset {
-  background: rgb(237, 237, 237, 0.7);
-  padding: 30px;
-  border-radius: 20px;
-}
-
-.signFormsInputDiv,
-.signFormsButtonDiv {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-}
-
-.signForms-input,
-.signForms-buttons {
-  background: rgb(237, 237, 237, 0.7);
-  border-radius: 10px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.signForms-input:hover,
-.signForms-buttons:hover {
-  background-color: white;
-  transition: ease-in-out 50ms;
-}
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .signForms form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signForms-fieldset {
+    border: none;
+    margin-bottom: 20px;
+    background: rgb(237, 237, 237, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+  }
+  
+  .signForms-legend {
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signFormsInputDiv,
+  .signFormsButtonDiv {
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .signFormsInputDiv label,
+  .signFormsButtonDiv label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0 5px;
+    background: #f9f9f9;
+    color: #6b7c93;
+    transition: 0.2s;
+    pointer-events: none;
+  }
+  
+  .signForms-inputs:focus ~ label,
+  .signForms-inputs:not(:placeholder-shown) ~ label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #007bff;
+  }
+  
+  .signForms-inputs,
+  .signForms-buttons {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: rgb(237, 237, 237, 0.7);
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  
+  .signForms-inputs:hover,
+  .signForms-buttons:hover {
+    background-color: white;
+    color: #007bff;
+    transition: ease-in-out 50ms;
+  }
+  
+  .signForms button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
