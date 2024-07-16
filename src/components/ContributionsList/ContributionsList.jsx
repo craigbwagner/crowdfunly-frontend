@@ -1,7 +1,7 @@
-
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ContributionsList = ({ contributions, campaigns }) => {
+  console.log(contributions);
   return (
     <ul>
       {contributions.length === 0 ? (
@@ -9,12 +9,12 @@ const ContributionsList = ({ contributions, campaigns }) => {
       ) : (
         contributions.map((contribution) => (
           <li key={contribution._id}>
-            <h2>
-              <Link to={`/campaigns/${contribution.campaignId}`}>
-                {campaigns.find(campaign => campaign._id === contribution.campaignId)?.title}
+            <h3>
+              Campaign:&nbsp;
+              <Link to={`/campaigns/${contribution.campaignId._id}`}>
+                {contribution.campaignId.title}
               </Link>
-            </h2>
-            <p>Contributor: {contribution.contributedBy.username}</p>
+            </h3>
             <p>Amount: ${contribution.amount}</p>
             <p>
               Date:{" "}
@@ -25,7 +25,6 @@ const ContributionsList = ({ contributions, campaigns }) => {
                 timeZone: "UTC",
               })}
             </p>
-            <p>Comment: {contribution.comment}</p>
           </li>
         ))
       )}
