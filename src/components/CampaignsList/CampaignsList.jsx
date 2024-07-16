@@ -2,9 +2,15 @@ import { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
+import { Link } from "react-router-dom";
 
 function CampaignsList({ campaigns }) {
   const [rowData, setRowData] = useState([]);
+
+  const LinkCellRenderer = (params) => (
+    <Link to={"/campaigns/" + params.data._id}>{params.data.title}</Link>
+  );
+
   const columns = [
     {
       headerName: "Title",
@@ -14,6 +20,7 @@ function CampaignsList({ campaigns }) {
         closeOnApply: true,
         filterOptions: ["contains"],
       },
+      cellRenderer: LinkCellRenderer,
     },
     { headerName: "Goal", field: "goalAmount" },
     { headerName: "Amount Raised", field: "amountRaised" },
@@ -47,6 +54,7 @@ function CampaignsList({ campaigns }) {
         amountRaised: campaign.amountRaised,
         endDate: campaign.endDate,
         campaignType: campaign.campaignType,
+        _id: campaign._id,
       }));
       setRowData(campaignsArr);
     };
@@ -63,6 +71,9 @@ function CampaignsList({ campaigns }) {
           pagination={true}
           paginationPageSize={5}
           paginationPageSizeSelector={[20, 10, 5]}
+          frameworkComponents={{
+            LinkCellRenderer,
+          }}
         />
       </div>
     </div>
