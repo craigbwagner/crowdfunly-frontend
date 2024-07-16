@@ -6,7 +6,6 @@ const ContributionsList = ({
   userContributions,
 }) => {
   let userContributionsJSX = [];
-  console.log(contributions);
   if (userContributions) {
     userContributionsJSX = userContributions.map((contribution) => (
       <li key={contribution._id}>
