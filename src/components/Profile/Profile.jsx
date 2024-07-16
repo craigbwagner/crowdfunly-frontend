@@ -55,7 +55,6 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
               <ContributionsList
                 user={user}
                 contributions={contributions}
-                campaigns={campaigns}
               ></ContributionsList>
             );
           })}

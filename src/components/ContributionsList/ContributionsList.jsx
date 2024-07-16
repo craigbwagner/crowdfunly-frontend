@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ContributionsList = ({ contributions, campaigns }) => {
+const ContributionsList = ({ contributions }) => {
   console.log(contributions);
   return (
     <ul>
