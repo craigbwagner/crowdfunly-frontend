@@ -13,7 +13,9 @@ form {
 }
 
 fieldset {
-  background: rgb(237, 237, 237, 0.9);
+  background: rgb(237, 237, 237, 0.7);
+  padding: 30px;
+  border-radius: 20px;
 }
 
 .signForms-inputs,
