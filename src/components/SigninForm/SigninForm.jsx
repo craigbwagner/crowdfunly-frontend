@@ -1,6 +1,7 @@
 import * as authService from "../../services/authService";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./SignForms.css";
 
 const SigninForm = (props) => {
   const navigate = useNavigate();
@@ -34,8 +35,8 @@ const SigninForm = (props) => {
   return (
     <main>
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <fieldset aria-labelledby="signForm-legend">
-          <legend className="signForm-legend">Sign In</legend>
+        <fieldset aria-labelledby="signForms-legend">
+          <legend className="signForms-legend">Sign In</legend>
 
           <div>
             <label htmlFor="email">Username:</label>
