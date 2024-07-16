@@ -27,8 +27,8 @@ function ShowPage({ user, handleDeleteCampaign }) {
     <>
       <h1>{campaign.title}</h1>
       <h2>{campaign.campaignType}</h2>
-      <h3>Goal: {campaign.goalAmount}</h3>
-      <h3>Amount Raised: {campaign.amountRaised}</h3>
+      <h3>Goal: ${campaign.goalAmount}</h3>
+      <h3>Amount Raised: ${campaign.amountRaised}</h3>
       <h3>Created by: {campaign.createdBy.username}</h3>
       <h3>
         Created:{" "}
@@ -51,7 +51,7 @@ function ShowPage({ user, handleDeleteCampaign }) {
       {user
         ? campaign.createdBy._id === user._id && (
             <>
-              <Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link>
+              <button><Link to={`/campaigns/${campaign._id}/edit`}>Edit</Link></button>
               <button onClick={confirmDelete} type="button">
                 Delete
               </button>
@@ -59,7 +59,7 @@ function ShowPage({ user, handleDeleteCampaign }) {
           )
         : null}
       {user ? (
-        <Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link>
+        <button><Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link></button>
       ) : (
         <h3>Create an account to contribute</h3>
       )}
