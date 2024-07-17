@@ -29,12 +29,11 @@ const ContributionsList = ({
   if (userContributions) {
     contributionsJSX = userContributions.map((contribution) => (
       <div key={contribution._id} className="contribution-item">
-        <h3>
-          Campaign:&nbsp;
+        <p>
           <Link to={`/campaigns/${contribution.campaignId._id}`}>
             {contribution.campaignId.title}
           </Link>
-        </h3>
+        </p>
         <p>Amount: ${contribution.amount}</p>
         <p>
           Date:{" "}

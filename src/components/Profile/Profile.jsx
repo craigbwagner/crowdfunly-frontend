@@ -31,12 +31,9 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
           <ul>
             {userCampaigns.map((campaign) => (
               <li key={campaign._id}>
-                <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
+               <p><Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>  ending on {new Date(campaign.endDate).toLocaleDateString()}</p>
                 <p>{campaign.amountRaised.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} has been raised towards your goal of {campaign.goalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}.</p>
-                <p>End Date: {new Date(campaign.endDate).toLocaleDateString()}</p>
-             
-                <button onClick={() => handleEdit(campaign._id)}>Edit</button>
-                <button onClick={() => handleDelete(campaign._id)}>Delete</button>
+            
               </li>
             ))}
           </ul>

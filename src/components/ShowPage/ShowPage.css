@@ -65,13 +65,15 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-size: 18px; 
+  
 }
 
 .contribution-item {
   display: flex;
   border: 1px solid #ddd;
   background: rgb(237, 237, 237, 0.7);
-  border-radius: 20px;
+  border-radius: 5px;
   gap: 10px;
   text-align: center;
   align-items: center;
