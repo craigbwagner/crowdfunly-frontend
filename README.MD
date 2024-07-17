@@ -2,7 +2,7 @@
 
 ## App Description
 
-Crowdfunly is full stack MERN application. This modern and intuitive app allows users to create, manage, and contribute to various campaigns, helping individuals and organizations raise funds for their projects and causes.
+Crowdfunly is a modern and intuitive full stack MERN application that allows users to create, manage, and contribute to various campaigns, helping individuals and organizations raise funds for their projects and causes.
 
 ### Features:
 
@@ -46,3 +46,5 @@ Hosted by Heroku
 - Node.js
 
 ## Next Steps
+
+Future enhancements would include the ability to upload pictures to the user's profile and campaign page, create a more responsive site for all screen sizes, enable users to comment on campaigns and allow campaign creators to post updates and news, and implement a notification system to inform users about campaign updates, new contributions, and important milestones.
