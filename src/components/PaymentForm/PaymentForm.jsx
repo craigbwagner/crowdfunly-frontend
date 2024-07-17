@@ -25,7 +25,9 @@ const PaymentForm = ({ user }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const isConfirmed = window.confirm("Do you want to proceed with the payment?");
+    const isConfirmed = window.confirm(
+      "Do you want to proceed with the payment?",
+    );
     if (!isConfirmed) return;
 
     const { error, paymentMethod } = await createPaymentMethod();
@@ -56,26 +58,36 @@ const PaymentForm = ({ user }) => {
   };
 
   const createPaymentIntent = async (amount) => {
-    const response = await fetch("http://localhost:3000/stripe/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "http://localhost:3000/stripe/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: parseInt(amount) * 100 }),
       },
-      body: JSON.stringify({ amount: parseInt(amount) * 100 }),
-    });
+    );
     const data = await response.json();
     return data.clientSecret;
   };
 
   const addContribution = async () => {
-    const response = await fetch(`http://localhost:3000/contributions/${campaignId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+    const response = await fetch(
+      `http://localhost:3000/contributions/${campaignId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          campaignId,
+          amount: amount,
+          contributedBy: user._id,
+        }),
       },
-      body: JSON.stringify({ campaignId, amount: amount, contributedBy: user._id }),
-    });
+    );
     console.log(amount);
     return response.json();
   };
@@ -87,10 +99,18 @@ const PaymentForm = ({ user }) => {
       {!success ? (
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <legend className="payment-form-legend">Contribute to {campaign.title}</legend>
+            <legend className="payment-form-legend">
+              Contribute to {campaign.title}
+            </legend>
             <div className="form-group">
-              <input type="text" value={name} onChange={(evt) => setName(evt.target.value)} required placeholder=" " />
-              <label>Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(evt) => setName(evt.target.value)}
+                required
+                placeholder=" "
+              />
+              <label>Cardholder Name</label>
             </div>
             <div className="form-group">
               <input
