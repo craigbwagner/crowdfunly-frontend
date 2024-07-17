@@ -22,6 +22,7 @@ const ContributionsList = ({ contributions, parentComponent, userContributions }
       </div>
     ));
   }
+
   const contributionsJSX = contributions.map((contribution) => (
     <div key={contribution._id} className="contribution-item">
       <h3>Contributor: {contribution.contributedBy.username}</h3>
@@ -37,8 +38,9 @@ const ContributionsList = ({ contributions, parentComponent, userContributions }
       </p>
     </div>
   ));
+
   return (
-    <div className="contribution-item">
+    <div className="contributions-list">
       {contributions.length === 0 ? (
         <p>No contributions found.</p>
       ) : parentComponent === "profilePage" ? (
