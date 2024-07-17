@@ -88,7 +88,6 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
           )}
         </div>
         <h3>Contributions</h3>
-        <ul>
           <div className="contributions-container">
             {contributions.length === 0 ? (
               <p>No contributions yet.</p>
@@ -96,7 +95,6 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
               <ContributionsList contributions={contributions} parentComponent={"showPage"} />
             )}
           </div>
-        </ul>
       </div>
     </>
   );
