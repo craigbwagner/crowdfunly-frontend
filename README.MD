@@ -13,7 +13,15 @@ Crowdfunly is full stack MERN application. This modern and intuitive app allows 
 
 ## Screenshots
 
+![ScreenShot Pic 1]()
+![ScreenShot Pic 2]()
+![ScreenShot Pic 3]()
+
 ## Getting Started
+
+[Link to Site](Add herokuapp.com link)
+
+[Planning Materials](https://trello.com/invite/b/667d7b25176dc4e0a1ca2e35/ATTI7bfbdc345f8ed97888d346ef3143c37c895B80F6/unit-3-project)
 
 ## Technologies Used
 
