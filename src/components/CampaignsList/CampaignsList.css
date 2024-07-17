@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.centered-cell {
+  text-align: center;
+}
+
  .ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables {
    --ag-background-color: var(--ag-inherited-background-color, #FFF);
    --ag-foreground-color: var(--ag-inherited-foreground-color, #181d1f);

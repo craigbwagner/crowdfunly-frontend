@@ -23,12 +23,19 @@ function CampaignsList({ campaigns }) {
       flex: 2,
       minWidth: 200,
     },
-    { headerName: "Goal", field: "goalAmount", flex: 1, minWidth: 100 },
+    {
+      headerName: "Goal",
+      field: "goalAmount",
+      flex: 1,
+      minWidth: 100,
+      cellClass: "centered-cell",
+    },
     {
       headerName: "Amount Raised",
       field: "amountRaised",
       minWidth: 180,
       flex: 1,
+      cellClass: "centered-cell",
     },
     {
       headerName: "End Date",
@@ -42,6 +49,7 @@ function CampaignsList({ campaigns }) {
         }),
       flex: 1,
       minWidth: 160,
+      cellClass: "centered-cell",
     },
     {
       headerName: "Type",
@@ -53,6 +61,7 @@ function CampaignsList({ campaigns }) {
       },
       flex: 1,
       minWidth: 150,
+      cellClass: "centered-cell",
     },
   ];
 
