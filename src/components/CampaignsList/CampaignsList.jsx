@@ -21,9 +21,15 @@ function CampaignsList({ campaigns }) {
       },
       cellRenderer: LinkCellRenderer,
       flex: 2,
+      minWidth: 200,
     },
-    { headerName: "Goal", field: "goalAmount", minWidth: 150 },
-    { headerName: "Amount Raised", field: "amountRaised", minWidth: 150 },
+    { headerName: "Goal", field: "goalAmount", flex: 1, minWidth: 100 },
+    {
+      headerName: "Amount Raised",
+      field: "amountRaised",
+      minWidth: 180,
+      flex: 1,
+    },
     {
       headerName: "End Date",
       field: "endDate",
@@ -34,7 +40,8 @@ function CampaignsList({ campaigns }) {
           year: "numeric",
           timeZone: "UTC",
         }),
-      minWidth: 150,
+      flex: 1,
+      minWidth: 160,
     },
     {
       headerName: "Type",
@@ -44,6 +51,7 @@ function CampaignsList({ campaigns }) {
         closeOnApply: true,
         filterOptions: ["contains"],
       },
+      flex: 1,
       minWidth: 150,
     },
   ];
@@ -64,22 +72,26 @@ function CampaignsList({ campaigns }) {
   }, [campaigns]);
 
   return (
-    <div className="campaigns-container">
+    <>
       <h1>Available Campaigns</h1>
-      <div className="ag-theme-quartz" style={{ height: 500 }}>
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columns}
-          pagination={true}
-          paginationPageSize={10}
-          paginationPageSizeSelector={false}
-          frameworkComponents={{
-            LinkCellRenderer,
-          }}
-          domLayout="autoHeight"
-        />
+      <div className="campaignslist-container">
+        <div className="campaigns-container">
+          <div className="ag-theme-quartz" style={{ height: 500 }}>
+            <AgGridReact
+              rowData={rowData}
+              columnDefs={columns}
+              pagination={true}
+              paginationPageSize={10}
+              paginationPageSizeSelector={false}
+              frameworkComponents={{
+                LinkCellRenderer,
+              }}
+              domLayout="autoHeight"
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
