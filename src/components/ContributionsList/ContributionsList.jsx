@@ -25,8 +25,7 @@ const ContributionsList = ({
         </p>
       </div>
     ));
-  }
-  if (userContributions) {
+  } else if (userContributions) {
     contributionsJSX = userContributions.map((contribution) => (
       <div key={contribution._id} className="contribution-item">
         <p>
