@@ -11,7 +11,6 @@ const SigninForm = (props) => {
   });
 
   const handleChange = (e) => {
-    updateMessage("");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
