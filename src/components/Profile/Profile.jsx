@@ -51,7 +51,6 @@ const Profile = ({ user, campaigns, contributions }) => {
             <ul>
               <ContributionsList
                 user={user}
-                contributions={contributions}
                 userContributions={userContributions}
                 parentComponent={"profilePage"}
               ></ContributionsList>
