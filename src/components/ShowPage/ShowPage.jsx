@@ -88,11 +88,15 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
           )}
         </div>
         <h3>Contributions</h3>
-            {contributions.length === 0 ? (
-              <p>No contributions yet.</p>
-            ) : (
-              <ContributionsList contributions={contributions} parentComponent={"showPage"} />
-            )}
+        {contributions.length === 0 ? (
+          <p>No contributions yet.</p>
+        ) : (
+          <ContributionsList
+            contributions={contributions}
+            parentComponent={"showPage"}
+            campaignId={campaignId}
+          />
+        )}
       </div>
     </>
   );
