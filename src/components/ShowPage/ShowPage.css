@@ -13,6 +13,10 @@
   margin-bottom: -10px;
 }
 
+.showPage h3 {
+    font-weight: 500;
+}
+
 .showPage p {
   text-align: center;
 }
@@ -40,6 +44,13 @@
   margin: 0 10px;
 }
 
+.showPage-buttons a:hover,
+.showPage-buttons button:hover {
+  background-color: #2870a7;
+  color: white;
+  transition: ease-in-out 50ms;
+}
+
 .showPage-amounts,
 .showPage-dates {
   display: flex;
@@ -47,5 +58,4 @@
   margin: 10px 0;
   background: rgb(237, 237, 237, 0.7);
   border-radius: 20px;
-
 }

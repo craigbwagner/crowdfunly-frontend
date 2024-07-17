@@ -86,7 +86,7 @@ function ShowPage({ user, handleDeleteCampaign }) {
             <h3>Create an account to contribute</h3>
           )}
         </div>
-        <h2>Contributions</h2>
+        <h3>Contributions</h3>
       </div>
     </>
   );
