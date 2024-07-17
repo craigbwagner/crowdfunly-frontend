@@ -10,6 +10,7 @@ const PaymentForm = ({ user }) => {
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
+  const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
   const navigate = useNavigate();
 
@@ -78,6 +79,8 @@ const PaymentForm = ({ user }) => {
     console.log(amount);
     return response.json();
   };
+
+  if (!campaign) return <main>Loading...</main>;
 
   return (
     <div className="payment-form">
