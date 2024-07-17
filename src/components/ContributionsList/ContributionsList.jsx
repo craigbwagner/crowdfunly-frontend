@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom";
 
-const ContributionsList = ({
-  contributions,
-  parentComponent,
-  userContributions,
-}) => {
+const ContributionsList = ({ contributions, parentComponent, userContributions }) => {
   let userContributionsJSX = [];
   if (userContributions) {
     userContributionsJSX = userContributions.map((contribution) => (
-      <li key={contribution._id}>
+      <div key={contribution._id} className="contribution-item">
         <h3>
           Campaign:&nbsp;
-          <Link to={`/campaigns/${contribution.campaignId._id}`}>
-            {contribution.campaignId.title}
-          </Link>
+          <Link to={`/campaigns/${contribution.campaignId._id}`}>{contribution.campaignId.title}</Link>
         </h3>
         <p>Amount: ${contribution.amount}</p>
         <p>
@@ -25,11 +19,12 @@ const ContributionsList = ({
             timeZone: "UTC",
           })}
         </p>
-      </li>
+      </div>
     ));
   }
+
   const contributionsJSX = contributions.map((contribution) => (
-    <li key={contribution._id}>
+    <div key={contribution._id} className="contribution-item">
       <h3>Contributor: {contribution.contributedBy.username}</h3>
       <p>Amount: ${contribution.amount}</p>
       <p>
@@ -41,10 +36,11 @@ const ContributionsList = ({
           timeZone: "UTC",
         })}
       </p>
-    </li>
+    </div>
   ));
+
   return (
-    <ul>
+    <div className="contributions-list">
       {contributions.length === 0 ? (
         <p>No contributions found.</p>
       ) : parentComponent === "profilePage" ? (
@@ -52,7 +48,7 @@ const ContributionsList = ({
       ) : (
         contributionsJSX
       )}
-    </ul>
+    </div>
   );
 };
 

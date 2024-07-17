@@ -14,7 +14,7 @@
 }
 
 .showPage h3 {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .showPage p {
@@ -58,4 +58,22 @@
   margin: 10px 0;
   background: rgb(237, 237, 237, 0.7);
   border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+.contributions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contribution-item {
+  display: flex;
+  border: 1px solid #ddd;
+  background: rgb(237, 237, 237, 0.7);
+  border-radius: 20px;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
 }
