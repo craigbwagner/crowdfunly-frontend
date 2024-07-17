@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./PaymentForm.css";
 import { useParams, useNavigate } from "react-router-dom";
+import * as campaignService from "../../services/campaignService";
 
 const PaymentForm = ({ user }) => {
   const stripe = useStripe();
@@ -9,8 +10,17 @@ const PaymentForm = ({ user }) => {
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
+  const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCampaign = async () => {
+      const campaignData = await campaignService.show(campaignId);
+      setCampaign(campaignData);
+    };
+    fetchCampaign();
+  }, [campaignId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,44 +80,40 @@ const PaymentForm = ({ user }) => {
     return response.json();
   };
 
+  if (!campaign) return <main>Loading...</main>;
+
   return (
     <div className="payment-form">
-    {!success ? (
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend className="payment-form-legend">Add Contribution</legend>
-          <div className="form-group">
-            <input
-              type="text"
-              value={name}
-              onChange={(evt) => setName(evt.target.value)}
-              required
-              placeholder=" "
-            />
-            <label>Name</label>
-          </div>
-          <div className="form-group">
-            <input
-              type="number"
-              value={amount}
-              onChange={(evt) => setAmount(evt.target.value)}
-              required
-              placeholder=" "
-            />
-            <label>Amount (USD)</label>
-            <CardElement className="StripeElement" />
-          </div>
-          <button type="submit" disabled={!stripe}>
-            Pay
-          </button>
-        </fieldset>
-      </form>
-    ) : (
-      <div className="payment-success">
-        <h3>Payment Successful. Thank you for your contribution.</h3>
-      </div>
-    )}
-  </div>
-);
+      {!success ? (
+        <form onSubmit={handleSubmit}>
+          <fieldset>
+            <legend className="payment-form-legend">Contribute to {campaign.title}</legend>
+            <div className="form-group">
+              <input type="text" value={name} onChange={(evt) => setName(evt.target.value)} required placeholder=" " />
+              <label>Name</label>
+            </div>
+            <div className="form-group">
+              <input
+                type="number"
+                value={amount}
+                onChange={(evt) => setAmount(evt.target.value)}
+                required
+                placeholder=" "
+              />
+              <label>Amount (USD)</label>
+              <CardElement className="StripeElement" />
+            </div>
+            <button type="submit" disabled={!stripe}>
+              Pay
+            </button>
+          </fieldset>
+        </form>
+      ) : (
+        <div className="payment-success">
+          <h3>Payment Successful. Thank you for your contribution.</h3>
+        </div>
+      )}
+    </div>
+  );
 };
 export default PaymentForm;
