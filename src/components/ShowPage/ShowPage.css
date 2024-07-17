@@ -19,12 +19,12 @@
 
 .showPage span {
   font-weight: normal;
+  font-size: 20px;
 }
 
 .showPage-buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  justify-content: center;
 }
 
 .showPage-buttons a,
@@ -37,4 +37,15 @@
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
+  margin: 0 10px;
+}
+
+.showPage-amounts,
+.showPage-dates {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  background: rgb(237, 237, 237, 0.7);
+  border-radius: 20px;
+
 }

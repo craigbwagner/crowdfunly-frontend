@@ -29,36 +29,41 @@ function ShowPage({ user, handleDeleteCampaign }) {
         <h1>{campaign.title}</h1>
         <p>({campaign.campaignType})</p>
         <h3>
-          Goal: <span>${campaign.goalAmount}</span>
-        </h3>
-        <h3>
-          Amount Raised: <span>${campaign.amountRaised}</span>
-        </h3>
-        <h3>
           Created by: <span>{campaign.createdBy.username}</span>
         </h3>
-        <h3>
-          Created:{" "}
-          <span>
-            {new Date(campaign.createdAt).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-              timeZone: "UTC",
-            })}
-          </span>
-        </h3>
-        <h3>
-          End Date:{" "}
-          <span>
-            {new Date(campaign.endDate).toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-              timeZone: "UTC",
-            })}
-          </span>
-        </h3>
+        <div className="showPage-amounts">
+          <h3>
+            Goal: <span>${campaign.goalAmount}</span>
+          </h3>
+          <h3>
+            Amount Raised: <span>${campaign.amountRaised}</span>
+          </h3>
+        </div>
+
+        <div className="showPage-dates">
+          <h3>
+            Created:{" "}
+            <span>
+              {new Date(campaign.createdAt).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                timeZone: "UTC",
+              })}
+            </span>
+          </h3>
+          <h3>
+            End Date:{" "}
+            <span>
+              {new Date(campaign.endDate).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                timeZone: "UTC",
+              })}
+            </span>
+          </h3>
+        </div>
         <p>{campaign.description}</p>
         <div className="showPage-buttons">
           {user
@@ -75,7 +80,7 @@ function ShowPage({ user, handleDeleteCampaign }) {
             : null}
           {user ? (
             <button>
-              <Link to={`/contributions/${campaign._id}`}>Contribute to this Campaign</Link>
+              <Link to={`/contributions/${campaign._id}`}>Contribute</Link>
             </button>
           ) : (
             <h3>Create an account to contribute</h3>
