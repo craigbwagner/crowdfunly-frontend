@@ -59,7 +59,7 @@ const PaymentForm = ({ user }) => {
 
   const createPaymentIntent = async (amount) => {
     const response = await fetch(
-      `https://${import.meta.env.VITE_EXPRESS_BACKEND_URL}}/stripe/create-payment-intent`,
+      `https://${import.meta.env.VITE_EXPRESS_BACKEND_URL}/stripe/create-payment-intent`,
       {
         method: "POST",
         headers: {
