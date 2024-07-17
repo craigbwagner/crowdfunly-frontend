@@ -25,11 +25,12 @@ const ContributionsList = ({
         </p>
       </div>
     ));
-  } else if (userContributions) {
+  }
+  if (userContributions) {
     contributionsJSX = userContributions.map((contribution) => (
       <div key={contribution._id} className="contribution-item">
         <p>
-          <Link to={`/campaigns/${contribution.campaignId._id}`}>
+          <Link to={`/campaigns/${contribution?.campaignId?._id}`}>
             {contribution.campaignId.title}
           </Link>
         </p>
