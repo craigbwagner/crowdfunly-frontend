@@ -6,7 +6,7 @@ const ContributionsList = ({
   campaignId,
 }) => {
   let contributionsJSX = [];
-  if (campaignId) {
+  if (contributions) {
     const campaignContributions = contributions.filter(
       (contribution) => contribution.campaignId._id === campaignId,
     );
