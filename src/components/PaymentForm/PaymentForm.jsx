@@ -88,7 +88,6 @@ const PaymentForm = ({ user }) => {
         }),
       },
     );
-    console.log(amount);
     return response.json();
   };
 
