@@ -69,10 +69,11 @@ function CampaignsList({ campaigns }) {
           columnDefs={columns}
           pagination={true}
           paginationPageSize={10}
-          paginationPageSizeSelector={[10, 25, 50]}
+          paginationPageSizeSelector={false}
           frameworkComponents={{
             LinkCellRenderer,
           }}
+          domLayout="autoHeight"
         />
       </div>
     </div>
