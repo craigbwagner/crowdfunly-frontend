@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 const ContributionsList = ({
   contributions,
-  parentComponent,
   userContributions,
   campaignId,
 }) => {

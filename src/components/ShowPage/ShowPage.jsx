@@ -93,7 +93,6 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
         ) : (
           <ContributionsList
             contributions={contributions}
-            parentComponent={"showPage"}
             campaignId={campaignId}
           />
         )}
