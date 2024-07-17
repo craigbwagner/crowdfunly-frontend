@@ -39,3 +39,18 @@ nav a:hover {
 nav .right-align {
   margin-left: auto;
 }
+
+nav h1 {
+  position: relative;
+  font-family: "Righteous", sans-serif;
+  font-size: 80px;
+  margin: -50px 0;
+  color: white;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 1);
+}
+
+nav h1 {
+  color: black;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 1px rgb(201, 197, 197)
+}
