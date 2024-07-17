@@ -59,7 +59,7 @@ const PaymentForm = ({ user }) => {
 
   const createPaymentIntent = async (amount) => {
     const response = await fetch(
-      `${import.meta.env.VITE_EXPRESS_BACKEND_URL}}/stripe/create-payment-intent`,
+      `https://${import.meta.env.VITE_EXPRESS_BACKEND_URL}}/stripe/create-payment-intent`,
       {
         method: "POST",
         headers: {
@@ -74,7 +74,7 @@ const PaymentForm = ({ user }) => {
 
   const addContribution = async () => {
     const response = await fetch(
-      `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/contributions/${campaignId}`,
+      `https://${import.meta.env.VITE_EXPRESS_BACKEND_URL}/contributions/${campaignId}`,
       {
         method: "POST",
         headers: {
