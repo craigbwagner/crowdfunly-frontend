@@ -25,8 +25,24 @@ Crowdfunly is full stack MERN application. This modern and intuitive app allows 
 
 ## Technologies Used
 
+Hosted by Heroku
+
 ### Frontend
 
+- HTML
+- CSS
+- JavaScript
+- EJS
+- React
+- React Data Tables
+
 ### Backend
+
+- MongoDB
+- Express
+- Bcrypt
+- JSON Web Tokens (JWT)
+- Stripe
+- Node.js
 
 ## Next Steps
