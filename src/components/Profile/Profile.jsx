@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import ContributionsList from "../ContributionsList/ContributionsList";
-import { useEffect, useState } from "react";
 import "./Profile.css";
 
-const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
+const Profile = ({ user, campaigns, contributions }) => {
   const navigate = useNavigate();
   const userContributions = contributions.filter(
     (contribution) => contribution.contributedBy._id === user._id,
