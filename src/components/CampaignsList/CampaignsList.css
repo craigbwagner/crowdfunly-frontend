@@ -14,6 +14,10 @@
   text-align: center;
 }
 
+.ag-header-cell-label {
+  justify-content: center;
+}
+
  .ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables {
    --ag-background-color: var(--ag-inherited-background-color, #FFF);
    --ag-foreground-color: var(--ag-inherited-foreground-color, #181d1f);
