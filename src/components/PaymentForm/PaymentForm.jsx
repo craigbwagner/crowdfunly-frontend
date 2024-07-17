@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./PaymentForm.css";
 import { useParams, useNavigate } from "react-router-dom";
+import * as campaignService from "../../services/campaignService";
 
 const PaymentForm = ({ user }) => {
   const stripe = useStripe();
@@ -75,7 +76,7 @@ const PaymentForm = ({ user }) => {
     {!success ? (
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend className="payment-form-legend">Add Contribution</legend>
+          <legend className="payment-form-legend">Contribute to {campaign.title}</legend>
           <div className="form-group">
             <input
               type="text"
