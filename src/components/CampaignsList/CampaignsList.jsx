@@ -10,6 +10,14 @@ function CampaignsList({ campaigns }) {
     <Link to={"/campaigns/" + params.data._id}>{params.data.title}</Link>
   );
 
+  const currencyFormatter = (params) => {
+    return "$" + formatNumber(params.value);
+  };
+
+  const formatNumber = (number) => {
+    return Math.floor(number).toLocaleString();
+  };
+
   const columns = [
     {
       headerName: "Title",
@@ -29,6 +37,7 @@ function CampaignsList({ campaigns }) {
       flex: 1,
       minWidth: 100,
       cellClass: "centered-cell",
+      valueFormatter: currencyFormatter,
     },
     {
       headerName: "Amount Raised",
@@ -36,6 +45,7 @@ function CampaignsList({ campaigns }) {
       minWidth: 180,
       flex: 1,
       cellClass: "centered-cell",
+      valueFormatter: currencyFormatter,
     },
     {
       headerName: "End Date",
