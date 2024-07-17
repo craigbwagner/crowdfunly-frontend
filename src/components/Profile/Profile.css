@@ -1,69 +1,60 @@
 .profile-page {
-    padding: 20px;
-  }
+  padding: 20px;
+}
 
 .columns {
-    display: flex;
-    justify-content: space-between;
-  }
+  display: flex;
+  justify-content: space-between;
+}
 
-  .campaigns, .contributions {
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    /* font-size: 16px;  */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
-    
-  }
+.campaigns,
+.contributions {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  line-height: 1.6;
 
-  .contributions {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
 
-  }
+.campaigns {
+  margin-right: 20px;
+}
 
+.campaigns ul,
+.contributions ul {
+  list-style-type: none;
+  padding: 0;
 
-  .campaigns {
-    margin-right: 20px;
-  }
+}
 
-  .campaigns ul, .contributions ul {
-    list-style-type: none;
-    padding: 0;
-    
-  }
+.campaigns li,
+.contributions li {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  background: rgb(237, 237, 237, 0.7);
+  border-radius: 5px;
+  padding: 5px;
+}
 
-  .campaigns li, .contributions li {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    background: rgb(237, 237, 237, 0.7);
-    border-radius: 5px;
-    
-  }
+.campaigns p,
+.contributions p {
+  margin: 5px 0px 5px 5px;
+  
+}
 
-  .campaigns p, .contributions p {
-    margin: 5px 0;
-  }
+h1 {
+  margin-top: 0;
+  margin-bottom: 50px;
+}
 
-  .campaigns a, .contributions a {
-    /* font-size: 18px;  */
-  }
-
-  .campaigns a:hover, .contributions a:hover {
-    font-weight: ;
-  }
-
-  h1 {
-    margin-top: 0;
-    margin-bottom: 50px;
-  }
-
-  h2 {
-    border-bottom: 2px solid rgba(51, 51, 51, 0.3);
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    font-size: 24px; 
-  }
+h2 {
+  border-bottom: 2px solid rgba(51, 51, 51, 0.3);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
