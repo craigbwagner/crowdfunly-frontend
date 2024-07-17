@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import ContributionsList from "../ContributionsList/ContributionsList";
 import { useEffect, useState } from "react";
+import "./Profile.css";
 
 const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
   const navigate = useNavigate();
