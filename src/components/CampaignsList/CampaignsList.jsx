@@ -20,9 +20,23 @@ function CampaignsList({ campaigns }) {
         filterOptions: ["contains"],
       },
       cellRenderer: LinkCellRenderer,
+      flex: 2,
+      minWidth: 200,
     },
-    { headerName: "Goal", field: "goalAmount" },
-    { headerName: "Amount Raised", field: "amountRaised" },
+    {
+      headerName: "Goal",
+      field: "goalAmount",
+      flex: 1,
+      minWidth: 100,
+      cellClass: "centered-cell",
+    },
+    {
+      headerName: "Amount Raised",
+      field: "amountRaised",
+      minWidth: 180,
+      flex: 1,
+      cellClass: "centered-cell",
+    },
     {
       headerName: "End Date",
       field: "endDate",
@@ -33,6 +47,9 @@ function CampaignsList({ campaigns }) {
           year: "numeric",
           timeZone: "UTC",
         }),
+      flex: 1,
+      minWidth: 160,
+      cellClass: "centered-cell",
     },
     {
       headerName: "Type",
@@ -42,6 +59,9 @@ function CampaignsList({ campaigns }) {
         closeOnApply: true,
         filterOptions: ["contains"],
       },
+      flex: 1,
+      minWidth: 150,
+      cellClass: "centered-cell",
     },
   ];
 
@@ -61,21 +81,26 @@ function CampaignsList({ campaigns }) {
   }, [campaigns]);
 
   return (
-    <div className="campaigns-container">
+    <>
       <h1>Available Campaigns</h1>
-      <div className="ag-theme-quartz" style={{ height: 500 }}>
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columns}
-          pagination={true}
-          paginationPageSize={5}
-          paginationPageSizeSelector={[20, 10, 5]}
-          frameworkComponents={{
-            LinkCellRenderer,
-          }}
-        />
+      <div className="campaignslist-container">
+        <div className="campaigns-container">
+          <div className="ag-theme-quartz" style={{ height: 500 }}>
+            <AgGridReact
+              rowData={rowData}
+              columnDefs={columns}
+              pagination={true}
+              paginationPageSize={10}
+              paginationPageSizeSelector={false}
+              frameworkComponents={{
+                LinkCellRenderer,
+              }}
+              domLayout="autoHeight"
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

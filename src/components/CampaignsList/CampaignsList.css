@@ -1,11 +1,22 @@
-/*
- * This file is a theme downloaded from the AG Grid Theme Builder for AG Grid 32.0.2.
- *
- * See installation docs at https://www.ag-grid.com/javascript-data-grid/applying-theme-builder-styling-grid/
- */
-
  @import url('https://fonts.googleapis.com/css2?family=IBM%20Plex%20Sans:wght@400;700&display=swap');
 
+.campaigns-container {
+  min-width: 800px;
+  width: 80%;
+}
+
+.campaignslist-container {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-cell {
+  text-align: center;
+}
+
+.ag-header-cell-label {
+  justify-content: center;
+}
 
  .ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables {
    --ag-background-color: var(--ag-inherited-background-color, #FFF);
