@@ -52,7 +52,7 @@ const ContributionsList = ({
 
   return (
     <div className="contributions-list">
-      {contributionsJSX.length === 0 ? (
+      {contributionsJSX.length === 0 || contributionsJSX === null ? (
         <p>No contributions yet.</p>
       ) : (
         contributionsJSX
