@@ -1,19 +1,14 @@
 import * as authService from "../../services/authService";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SignForms.css";
 
 const SigninForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState([""]);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-
-  const updateMessage = (msg) => {
-    setMessage(msg);
-  };
 
   const handleChange = (e) => {
     updateMessage("");
@@ -41,7 +36,10 @@ const SigninForm = (props) => {
   return (
     <main>
       <form className="signForms" autoComplete="off" onSubmit={handleSubmit}>
-        <fieldset className="signForms-fieldset" aria-labelledby="signForms-fieldset">
+        <fieldset
+          className="signForms-fieldset"
+          aria-labelledby="signForms-fieldset"
+        >
           <legend className="signForms-legend">Sign In</legend>
 
           <div className="signFormsInputDiv">

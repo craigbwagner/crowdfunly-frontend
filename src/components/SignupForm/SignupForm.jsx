@@ -1,21 +1,16 @@
 import * as authService from "../../services/authService";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../SigninForm/SignForms.css";
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState([""]);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     passwordConf: "",
   });
-
-  const updateMessage = (msg) => {
-    setMessage(msg);
-  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,7 +36,10 @@ const SignupForm = (props) => {
   return (
     <main>
       <form className="signForms" onSubmit={handleSubmit}>
-        <fieldset className="signForms-fieldset" aria-labelledby="signForms-legend">
+        <fieldset
+          className="signForms-fieldset"
+          aria-labelledby="signForms-legend"
+        >
           <legend className="signForms-legend">Sign Up</legend>
 
           <div className="signFormsInputDiv">
