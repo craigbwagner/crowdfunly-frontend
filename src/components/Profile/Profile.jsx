@@ -21,42 +21,45 @@ const Profile = ({ user, campaigns, onDeleteCampaign, contributions }) => {
   };
 
   return (
-    <div>
-      <h1>{user.username}'s Profile</h1>
-
-      <h2>Created Campaigns</h2>
-      {userCampaigns.length > 0 ? (
-        <ul>
-          {userCampaigns.map((campaign) => (
-            <li key={campaign._id}>
-              <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
-              <p>{campaign.description}</p>
-              <p>Goal: ${campaign.goalAmount}</p>
-              <p>Raised: ${campaign.amountRaised}</p>
-              <p>End Date: {new Date(campaign.endDate).toLocaleDateString()}</p>
-              <p>Type: {campaign.campaignType}</p>
-              <button onClick={() => handleEdit(campaign._id)}>Edit</button>
-              <button onClick={() => handleDelete(campaign._id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No campaigns created yet.</p>
-      )}
-
-      <h2>Contributions</h2>
-      {userContributions.length > 0 ? (
-        <ul>
-          <ContributionsList
-            user={user}
-            contributions={contributions}
-            userContributions={userContributions}
-          ></ContributionsList>
-        </ul>
-      ) : (
-        <p>No contributions made yet.</p>
-      )}
+    <div className="profile-page">
+    <h1>{user.username}'s Profile</h1>
+    <div className="columns">
+      <div className="campaigns">
+        <h2>My Campaigns</h2>
+        {userCampaigns.length > 0 ? (
+          <ul>
+            {userCampaigns.map((campaign) => (
+              <li key={campaign._id}>
+                <Link to={`/campaigns/${campaign._id}`}>{campaign.title}</Link>
+                <p>{campaign.amountRaised.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} has been raised towards your goal of {campaign.goalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}.</p>
+                <p>End Date: {new Date(campaign.endDate).toLocaleDateString()}</p>
+             
+                <button onClick={() => handleEdit(campaign._id)}>Edit</button>
+                <button onClick={() => handleDelete(campaign._id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No campaigns created yet.</p>
+        )}
+      </div>
+      <div className="contributions">
+        <h2>My Contributions</h2>
+        {userContributions.length > 0 ? (
+          <ul>
+            <ContributionsList
+              user={user}
+              contributions={contributions}
+              userContributions={userContributions}
+              parentComponent={"profilePage"}
+            ></ContributionsList>
+          </ul>
+        ) : (
+          <p>No contributions made yet.</p>
+        )}
+      </div>
     </div>
+  </div>
   );
 };
 
