@@ -68,8 +68,8 @@ function CampaignsList({ campaigns }) {
           rowData={rowData}
           columnDefs={columns}
           pagination={true}
-          paginationPageSize={5}
-          paginationPageSizeSelector={[20, 10, 5]}
+          paginationPageSize={10}
+          paginationPageSizeSelector={[10, 25, 50]}
           frameworkComponents={{
             LinkCellRenderer,
           }}
