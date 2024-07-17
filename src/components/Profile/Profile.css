@@ -28,3 +28,7 @@
     list-style-type: none;
     padding: 0;
   }
+
+  .campaigns li, .contributions li {
+    margin-bottom: 20px;
+  }
