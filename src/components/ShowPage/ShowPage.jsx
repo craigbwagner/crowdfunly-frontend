@@ -3,8 +3,9 @@ import * as campaignService from "../../services/campaignService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ShowPage.css";
+import ContributionsList from "../ContributionsList/ContributionsList";
 
-function ShowPage({ user, handleDeleteCampaign }) {
+function ShowPage({ user, handleDeleteCampaign, contributions }) {
   const [campaign, setCampaign] = useState(null);
   const { campaignId } = useParams();
 

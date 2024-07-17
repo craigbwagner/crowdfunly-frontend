@@ -7,6 +7,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 1rem;
+  margin-right: 10px;
 }
 
 nav ul li {
