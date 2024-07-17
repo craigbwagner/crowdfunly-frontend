@@ -6,6 +6,7 @@ const ContributionsList = ({
   campaignId,
 }) => {
   let contributionsJSX = [];
+  console.log(contributions);
   if (contributions) {
     const campaignContributions = contributions.filter(
       (contribution) => contribution.campaignId._id === campaignId,
@@ -25,8 +26,7 @@ const ContributionsList = ({
         </p>
       </div>
     ));
-  }
-  if (userContributions) {
+  } else if (userContributions) {
     contributionsJSX = userContributions.map((contribution) => (
       <div key={contribution._id} className="contribution-item">
         <p>
@@ -46,6 +46,8 @@ const ContributionsList = ({
         </p>
       </div>
     ));
+  } else {
+    <p>Loading...</p>;
   }
 
   return (
