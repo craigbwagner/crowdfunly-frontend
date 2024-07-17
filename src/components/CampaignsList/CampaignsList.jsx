@@ -20,9 +20,10 @@ function CampaignsList({ campaigns }) {
         filterOptions: ["contains"],
       },
       cellRenderer: LinkCellRenderer,
+      flex: 2,
     },
-    { headerName: "Goal", field: "goalAmount" },
-    { headerName: "Amount Raised", field: "amountRaised" },
+    { headerName: "Goal", field: "goalAmount", minWidth: 150 },
+    { headerName: "Amount Raised", field: "amountRaised", minWidth: 150 },
     {
       headerName: "End Date",
       field: "endDate",
@@ -33,6 +34,7 @@ function CampaignsList({ campaigns }) {
           year: "numeric",
           timeZone: "UTC",
         }),
+      minWidth: 150,
     },
     {
       headerName: "Type",
@@ -42,6 +44,7 @@ function CampaignsList({ campaigns }) {
         closeOnApply: true,
         filterOptions: ["contains"],
       },
+      minWidth: 150,
     },
   ];
 
