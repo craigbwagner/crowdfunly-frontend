@@ -93,7 +93,7 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
             ) : (
               <ContributionsList contributions={contributions} parentComponent={"showPage"} />
             )}
-          </div>
+      </div>
     </>
   );
 }

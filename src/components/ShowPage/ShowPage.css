@@ -68,8 +68,12 @@
 }
 
 .contribution-item {
+  display: flex;
   border: 1px solid #ddd;
-  padding: 10px;
   background: rgb(237, 237, 237, 0.7);
   border-radius: 20px;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
 }
