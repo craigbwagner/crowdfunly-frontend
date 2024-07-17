@@ -34,10 +34,22 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
         </h3>
         <div className="showPage-amounts">
           <h3>
-            Goal: <span>{campaign.goalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
+            Goal:{" "}
+            <span>
+              {campaign.goalAmount.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </span>
           </h3>
           <h3>
-            Amount Raised: <span>{campaign.amountRaised.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
+            Amount Raised:{" "}
+            <span>
+              {campaign.amountRaised.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </span>
           </h3>
         </div>
 
