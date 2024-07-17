@@ -9,15 +9,15 @@ const ContributionsList = ({
   console.log(contributions);
   if (contributions) {
     const campaignContributions = contributions.filter(
-      (contribution) => contribution.campaignId._id === campaignId,
+      (contribution) => contribution?.campaignId?._id === campaignId,
     );
     contributionsJSX = campaignContributions.map((contribution) => (
       <div key={contribution._id} className="contribution-item">
-        <h3>Contributor: {contribution.contributedBy.username}</h3>
-        <p>Amount: ${contribution.amount}</p>
+        <h3>Contributor: {contribution?.contributedBy?.username}</h3>
+        <p>Amount: ${contribution?.amount}</p>
         <p>
           Date:{" "}
-          {new Date(contribution.createdAt).toLocaleDateString("en-US", {
+          {new Date(contribution?.createdAt).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
             year: "numeric",
