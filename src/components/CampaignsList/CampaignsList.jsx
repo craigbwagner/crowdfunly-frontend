@@ -30,6 +30,7 @@ function CampaignsList({ campaigns }) {
       cellRenderer: LinkCellRenderer,
       flex: 2,
       minWidth: 200,
+      cellClass: "center-cell",
     },
     {
       headerName: "Goal",
