@@ -12,11 +12,19 @@ Crowdfunly is a modern and intuitive full stack MERN application that allows use
 - Campaign Details: View detailed information about each campaign, including the amount raised and contributions made.
 
 ## Screenshots
-
+**Home**
 ![Screenshot of Home](/src/components/Screenshots/Home.png)
+
+**Sign Up**
 ![Screenshot of Signup](/src/components/Screenshots/Signup.png)
+
+**Profile**
 ![ScreenShot of Profile](/src/components/Screenshots/Profile.png)
+
+**Campaign**
 ![ScreenShot of Campaign](/src/components/Screenshots/Campaign.png)
+
+**Payment**
 ![ScreenShot of Payment](/src/components/Screenshots/Payment.png)
 
 ## Getting Started
