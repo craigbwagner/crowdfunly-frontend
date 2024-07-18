@@ -40,7 +40,7 @@ const Profile = ({ user, campaigns, contributions }) => {
                     <Link to={`/campaigns/${campaign._id}`}>
                       {campaign.title}
                     </Link>{" "}
-                    ending on {new Date(campaign.endDate).toLocaleDateString()}
+                  
                   </p>
                   <p>
                     {campaign.amountRaised.toLocaleString("en-US", {
@@ -51,8 +51,7 @@ const Profile = ({ user, campaigns, contributions }) => {
                     {campaign.goalAmount.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
-                    })}
-                    .
+                    })} with {Math.ceil((new Date(campaign.endDate) - new Date()) / (1000 * 60 * 60 * 24)) || 0} days remaining.
                   </p>
                 </li>
               ))}
