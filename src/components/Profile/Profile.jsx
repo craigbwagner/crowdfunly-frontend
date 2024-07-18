@@ -9,10 +9,26 @@ const Profile = ({ user, campaigns, contributions }) => {
   const userCampaigns = campaigns.filter(
     (campaign) => campaign.createdBy._id === user._id,
   );
+  
+  const getGreeting = () => {
+    const currentHour = new Date().getHours();
+    if (currentHour < 12) {
+      return 'Good Morning';
+    } else if (currentHour < 18) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
+  };
+
+  const greeting = getGreeting();
+
 
   return (
     <div className="profile-page">
-      <h1>{user.username}'s Profile</h1>
+      <div className="greeting">
+      <h1>{greeting}, {user.username}!</h1>
+      </div>
       <div className="columns">
         <div className="campaigns">
           <h2>My Campaigns</h2>
