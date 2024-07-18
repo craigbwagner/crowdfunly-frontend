@@ -1,12 +1,12 @@
  @import url('https://fonts.googleapis.com/css2?family=IBM%20Plex%20Sans:wght@400;700&display=swap');
 
 .campaigns-container {
-  min-width: 800px;
-  width: 80%;
+  min-width: 90%;
 }
 
 .campaignslist-container {
   display: flex;
+  
   justify-content: center;
 }
 
