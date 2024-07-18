@@ -32,6 +32,7 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
         <h3>
           Created by: <span>{campaign.createdBy.username}</span>
         </h3>
+        <p>{campaign.description}</p>
         <div className="showPage-amounts">
           <h3>
             Goal:{" "}
@@ -77,7 +78,7 @@ function ShowPage({ user, handleDeleteCampaign, contributions }) {
             </span>
           </h3>
         </div>
-        <p>{campaign.description}</p>
+      
         <div className="showPage-buttons">
           {user
             ? campaign.createdBy._id === user._id && (

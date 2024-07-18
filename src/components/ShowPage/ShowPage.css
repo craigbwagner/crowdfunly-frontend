@@ -15,6 +15,7 @@
 
 .showPage h3 {
   font-weight: 500;
+  text-align: center;
 }
 
 .showPage p {
@@ -41,7 +42,7 @@
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 15px 10px;
 }
 
 .showPage-buttons a:hover,

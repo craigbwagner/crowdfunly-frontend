@@ -1,17 +1,20 @@
  @import url('https://fonts.googleapis.com/css2?family=IBM%20Plex%20Sans:wght@400;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
 
 .campaigns-container {
-  min-width: 800px;
-  width: 80%;
+  min-width: 100%;
 }
 
 .campaignslist-container {
   display: flex;
-  justify-content: center;
+
 }
 
 .centered-cell {
   text-align: center;
+
 }
 
 .ag-header-cell-label {
