@@ -93,7 +93,7 @@ function CampaignsList({ campaigns }) {
 
   return (
     <>
-      <h1>Welcome to Crowdfunly!</h1>
+      <h3>Welcome to Crowdfunly!</h3>
       <p>Browse our available campaigns below and find a cause that speaks to you. Your support makes all the difference!</p>
       <div className="campaignslist-container">
         <div className="campaigns-container">
