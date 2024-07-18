@@ -13,9 +13,11 @@ Crowdfunly is a modern and intuitive full stack MERN application that allows use
 
 ## Screenshots
 
-![ScreenShot Pic 1]()
-![ScreenShot Pic 2]()
-![ScreenShot Pic 3]()
+![Screenshot of Home](/src/components/Screenshots/Home.png)
+![Screenshot of Signup](/src/components/Screenshots/Signup.png)
+![ScreenShot of Profile](/src/components/Screenshots/Profile.png)
+![ScreenShot of Campaign](/src/components/Screenshots/Campaign.png)
+![ScreenShot of Payment](/src/components/Screenshots/Payment.png)
 
 ## Getting Started
 
